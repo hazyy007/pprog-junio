@@ -16,6 +16,7 @@
 #include "game.h"
 #include "command.h"
 #include "game_actions.h"
+#include "game_rules.h"
 #include <time.h>
 
 BOOL game_loop_command_allows_turn_roll(CommandCode code);
@@ -78,28 +79,37 @@ int main(int argc, char *argv[])
   Graphic_engine *gengine;
   FILE *log_file = NULL;
   char *log_filename = NULL;
-
-  /* Inicializacion de la semilla aleatoria */
-  srand(time(NULL));
-printf("funciona");
+  GameRules *rules = NULL;
+  int determinista = 0;
+  int i;
   /* Comprueba los argumentos de entrada */
   if (argc < 2)
   {
-    fprintf(stderr, "Uso: %s <game_data_file> [-l <log_file>]\n", argv[0]);
+    fprintf(stderr, "Uso: %s <game_data_file> [-l <log_file>] [-d]\n", argv[0]);
     return 1;
   }
 
-  /* Gestiona la apertura del archivo log si se solicita */
-  if (argc > 3 && strcmp(argv[2], "-l") == 0)
+  /*Gestionar argumentos de entrada -l y -d*/
+  for (i = 2; i < argc; i++)
   {
-    log_filename = argv[3];
-    log_file = fopen(log_filename, "w");
-    if (log_file == NULL)
-    {
-      fprintf(stderr, "Error opening log file.\n");
-      return 1;
+    if (strcmp(argv[i], "-l") == 0 && i + 1 < argc) {
+        log_filename = argv[++i];
+        log_file = fopen(log_filename, "w");
+        if (log_file == NULL) {
+            fprintf(stderr, "Error opening log file.\n");
+            return 1;
+        }
+    } else if (strcmp(argv[i], "-d") == 0) {
+        determinista = 1; /* Desactiva la aleatoriedad */
     }
   }
+
+  if (determinista) {
+      srand(1); /* Semilla fija para resultados predecibles */
+  } else {
+      srand(time(NULL)); /* Semilla basada en el tiempo para aleatoriedad real */
+  }
+  printf("Funciona\n");
 printf("se abre");
   /* Inicializacion del juego desde archivo */
   if (game_create_from_file(&game, argv[1]) == ERROR)
@@ -123,7 +133,7 @@ printf("se crea");
     }
     return 1;
   }
-
+  rules = game_rules_create();
   command = game_get_last_command(game);
 
   /* Bucle principal del juego */
@@ -155,6 +165,10 @@ printf("se crea");
     /* Actualiza la interfaz grafica post-comando */
     graphic_engine_paint_game(gengine, game, game_get_last_command_status(game), TRUE);
     sleep(1);
+    if (!determinista)
+    {
+      game_rules_update(rules, game);
+    }
 
     /* Procesa el cambio de turno solo tras acciones validas de exploracion */
     game_loop_update_turn(game, command);
@@ -171,6 +185,6 @@ printf("se crea");
   {
     fclose(log_file);
   }
-
+  game_rules_destroy(rules);
   return 0;
 }
