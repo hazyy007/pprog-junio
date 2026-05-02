@@ -873,46 +873,60 @@ Id game_get_object_id_from_name(Game *game, char *name)
   }
   return NO_ID;
 }
-int game_get_number_of_players(Game*game){
-  if(!game){
+int game_get_number_of_players(Game *game)
+{
+  if (!game)
+  {
     return -1;
   }
   return game->n_players;
 }
-Player *game_get_player_from_index(Game*game,int n){
-  if(!game||n>=game_get_number_of_players(game)||n<0){
+Player *game_get_player_from_index(Game *game, int n)
+{
+  if (!game || n >= game_get_number_of_players(game) || n < 0)
+  {
     return NULL;
   }
   return game->players[n];
 }
-int game_get_number_of_objects(Game*game){
-  if(!game){
+int game_get_number_of_objects(Game *game)
+{
+  if (!game)
+  {
     return -1;
   }
   return game->n_objects;
 }
-Object *game_get_object_from_index(Game*game,int n){
-  if(!game||n>=game_get_number_of_objects(game)||n<0){
+Object *game_get_object_from_index(Game *game, int n)
+{
+  if (!game || n >= game_get_number_of_objects(game) || n < 0)
+  {
     return NULL;
   }
   return game->objects[n];
 }
-int game_get_number_of_space(Game *game){
-  if(!game){
+int game_get_number_of_space(Game *game)
+{
+  if (!game)
+  {
     return -1;
   }
   return game->n_spaces;
 }
 
-Space*game_get_space_from_index(Game*game,int n){
-  if(!game||n>=game_get_number_of_space(game)||n<0){
+Space *game_get_space_from_index(Game *game, int n)
+{
+  if (!game || n >= game_get_number_of_space(game) || n < 0)
+  {
     return NULL;
   }
   return game->spaces[n];
 }
-Link *game_get_link_from_index(Game*game, int n){
-  if(!game||n>=game_get_number_of_links(game)||n<0){
+Link *game_get_link_from_index(Game *game, int n)
+{
+  if (!game || n >= game_get_number_of_links(game) || n < 0)
+  {
     return NULL;
   }
-return game->link[n];
+  return game->link[n];
 }

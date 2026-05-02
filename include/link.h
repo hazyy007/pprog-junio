@@ -12,6 +12,7 @@
 #define LINK_H
 
 #include "types.h"
+#include "game.h"
 
 /**
  * @brief Estructura opaca que representa un enlace entre espacios

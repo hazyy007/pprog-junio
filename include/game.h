@@ -312,6 +312,15 @@ int game_get_number_of_links(Game *game);
 Status game_add_link(Game *game, Link *link);
 
 /**
+ * @brief Obtiene un enlace por su índice
+ * @author Unai
+ * @param game Puntero al juego
+ * @param n índice del enlace
+ * @return el enlace del índice o NULL en caso de error
+ */
+Link *game_get_link_from_index(Game *game, int n);
+
+/**
  * @brief Obtiene el turno actual del juego.
  * @author Unai
  * @param game Puntero al juego.

@@ -13,7 +13,7 @@
 
  struct _GameRules
  {
-    int execution_counter; // Contador de ejecuciones para controlar la frecuencia de las reglas
+    int execution_counter; /* Contador de ejecuciones para controlar la frecuencia de las reglas*/
  };
 
  GameRules* game_rules_create()
@@ -41,7 +41,7 @@
     Character *character = NULL;
     if (!rules || !game) return ERROR;
 
-    // Incrementa el contador de ejecuciones
+    /* Incrementa el contador de ejecuciones */
     rules->execution_counter++;
 
     /*Solo aplicamos las reglas un 30% de las veces*/
@@ -55,7 +55,7 @@
         if (player && player_get_health(player) > 1)
         {
             player_set_health(player, player_get_health(player) - 1);
-            game_set_message(game, "Un gas toxico te ha afectado, pierdes 1 punto de salud.");
+            game_set_chat_message(game, "Un gas toxico te ha afectado, pierdes 1 punto de salud.");
         }
     }
     /*Regla 2: Curacion (5-9)*/
@@ -65,7 +65,7 @@
         if (player && player_get_health(player) < 10)
         {
             player_set_health(player, player_get_health(player) + 1);
-            game_set_message(game, "Encuentras una fuente de agua pura, ganas 1 punto de salud.");
+            game_set_chat_message(game, "Encuentras una fuente de agua pura, ganas 1 punto de salud.");
         }
     }
 
@@ -79,7 +79,7 @@
             if (object && space && object_get_movable(object) == TRUE)
             {
                 game_set_object_location(game, space_get_id(space), object_get_id(object));
-                game_set_message(game, "Un terremoto ha movido un objeto a otro lugar.");
+                game_set_chat_message(game, "Un terremoto ha movido un objeto a otro lugar.");
             }
         }   
     }
@@ -93,7 +93,7 @@
             if (link)
             {
                 link_set_open(link, !link_get_open(link));
-                game_set_message(game, "Un derrumbe ha bloqueado un camino.");
+                game_set_chat_message(game, "Un derrumbe ha bloqueado un camino.");
             }
         }
     }
@@ -101,7 +101,7 @@
     /*Regla 5: Mensaje ambiente*/
     if (random_event >= 20 && random_event < 25)
     {
-        game_set_message(game, "El ambiente se siente más tenso.");
+        game_set_chat_message(game, "El ambiente se siente más tenso.");
     }
 
     /*Regla 6: Character se mueve*/
@@ -110,12 +110,12 @@
         if (game_get_number_of_characters(game) > 0)
         {
             character = game_get_character_from_index(game, rand()%game_get_number_of_characters(game));
-            if (!character || character_get_friendly(character)) return OK; // Solo los personajes enemigos se mueven
+            if (!character || character_get_friendly(character)) return OK; /* Solo los personajes enemigos se mueven */
             space = game_get_space_from_index(game, rand()%game_get_number_of_space(game));
             if (space)
             {
                 game_set_character_location(game, space_get_id(space), character_get_id(character));
-                game_set_message(game, "Un personaje ha cambiado de lugar.");
+                game_set_chat_message(game, "Un personaje ha cambiado de lugar.");
             }
         }
     }
