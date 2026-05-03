@@ -32,6 +32,7 @@ Status game_actions_use(Game *game);
 Status game_actions_open(Game *game);
 Status game_actions_save(Game *game);
 Status game_actions_load(Game *game);
+Status game_actions_colab(Game *game);
 
 Status game_actions_update(Game *game, Command *command)
 {
@@ -86,6 +87,9 @@ Status game_actions_update(Game *game, Command *command)
   case SAVE:
   status= game_actions_save(game);
   break;
+  case COLAB:
+    status = game_actions_colab(game);
+    break;
   default:
     break;
   }
@@ -106,104 +110,77 @@ Status game_actions_exit(Game *game)
 Status game_actions_move(Game *game)
 {
   Id current_space_id = NO_ID, destination_id = NO_ID;
-  Id player_id = NO_ID;
+  Id player_id = NO_ID, colab_id = NO_ID;
   char **arg = NULL;
   Directions dir = NO_DIRECTION;
   Command *last_cmd = NULL;
   Space *dest_space = NULL;
   Character *character = NULL;
+  Player *current_player = NULL, *colab_player = NULL;
   int i = 0;
 
   /* Comprueba la validez del puntero */
-  if (!game)
-  {
-    return ERROR;
-  }
+  if (!game) return ERROR;
 
   /* Obtiene la direccion introducida */
   last_cmd = game_get_last_command(game);
   arg = command_get_arg(last_cmd);
-
-  if (arg == NULL || arg[0][0] == '\0')
-  {
-    return ERROR;
-  }
+  if (arg == NULL || arg[0][0] == '\0') return ERROR;
 
   /* Traduccion del argumento a la direccion enumerada */
-  if (strcasecmp(arg[0], "north") == 0 || strcasecmp(arg[0], "n") == 0)
-  {
-    dir = N;
-  }
-  else if (strcasecmp(arg[0], "south") == 0 || strcasecmp(arg[0], "s") == 0)
-  {
-    dir = S;
-  }
-  else if (strcasecmp(arg[0], "west") == 0 || strcasecmp(arg[0], "w") == 0)
-  {
-    dir = W;
-  }
-  else if (strcasecmp(arg[0], "east") == 0 || strcasecmp(arg[0], "e") == 0)
-  {
-    dir = E;
-  }
-  else if (strcasecmp(arg[0], "up") == 0 || strcasecmp(arg[0], "u") == 0)
-  {
-    dir = U;
-  }
-  else if (strcasecmp(arg[0], "down") == 0 || strcasecmp(arg[0], "d") == 0)
-  {
-    dir = D;
-  }
+  if (strcasecmp(arg[0], "north") == 0 || strcasecmp(arg[0], "n") == 0) dir = N;
+  else if (strcasecmp(arg[0], "south") == 0 || strcasecmp(arg[0], "s") == 0) dir = S;
+  else if (strcasecmp(arg[0], "west") == 0 || strcasecmp(arg[0], "w") == 0) dir = W;
+  else if (strcasecmp(arg[0], "east") == 0 || strcasecmp(arg[0], "e") == 0) dir = E;
+  else if (strcasecmp(arg[0], "up") == 0 || strcasecmp(arg[0], "u") == 0) dir = U;
+  else if (strcasecmp(arg[0], "down") == 0 || strcasecmp(arg[0], "d") == 0) dir = D;
 
   /* Obtiene la ubicacion actual del jugador activo */
   current_space_id = game_get_player_location(game);
-  if (current_space_id == NO_ID)
-  {
-    return ERROR;
-  }
+  if (current_space_id == NO_ID) return ERROR;
 
   /* Comprueba la viabilidad del movimiento */
   if (dir == NO_DIRECTION || game_connection_is_open(game, current_space_id, dir) == FALSE)
-  {
     return ERROR;
-  }
 
   destination_id = game_get_connection(game, current_space_id, dir);
-  if (destination_id == NO_ID)
-  {
+  if (destination_id == NO_ID) return ERROR;
+
+  current_player = game_get_player(game);
+  player_id = player_get_id(current_player);
+
+  /* Aplica el desplazamiento al destino al jugador principal */
+  if (game_set_player_location(game, destination_id) == ERROR) {
     return ERROR;
   }
 
-  /* Aplica el desplazamiento al destino */
-  if (destination_id != NO_ID)
-  {
-    player_id = player_get_id(game_get_player(game));
-    if (game_set_player_location(game, destination_id) == ERROR)
-    {
-      return ERROR;
+  /* Mueve a los que le siguen */
+  for (i = 0; i < game_get_number_of_characters(game); i++) {
+    character = game_get_character_from_index(game, i);
+    if (character != NULL && character_get_following(character) == player_id) {
+      game_set_character_location(game, destination_id, character_get_id(character));
     }
+  }
 
-    for (i = 0; i < game_get_number_of_characters(game); i++)
-    {
-      character = game_get_character_from_index(game, i);
-      if (character != NULL && character_get_following(character) == player_id)
-      {
-        if (game_set_character_location(game, destination_id, character_get_id(character)) == ERROR)
-        {
-          return ERROR;
-        }
+  /* Mueve al jugador colaborador */
+  colab_id = player_get_collaborator(current_player);
+  if (colab_id != NO_ID) {
+    for (i = 0; i < game_get_number_of_players(game); i++) {
+      colab_player = game_get_player_from_index(game, i);
+      if (colab_player && player_get_id(colab_player) == colab_id) {
+        player_set_location(colab_player, destination_id); /* Cambiamos su ubicacion */
+        break;
       }
     }
-
-    dest_space = game_get_space(game, destination_id);
-    if (dest_space != NULL)
-    {
-      space_set_discovered(dest_space, TRUE);
-    }
-    return OK;
   }
-  printf("No se ha podido mover en esa direccion.\n");
-  return ERROR;
+
+  /* Marca el nuevo espacio como descubierto */
+  dest_space = game_get_space(game, destination_id);
+  if (dest_space != NULL) {
+    space_set_discovered(dest_space, TRUE);
+  }
+
+  return OK;
 }
 
 Status game_actions_take(Game *game)
@@ -1017,4 +994,42 @@ Status game_actions_load(Game *game){
   return ERROR;
  }
  return s;
+}
+
+Status game_actions_colab(Game *game)
+{
+  Command *last_cmd = NULL;
+  char **arg = NULL;
+  Player *player = NULL, *target_player = NULL;
+  Id target_id = NO_ID;
+  int i;
+
+  if (!game) return ERROR;
+
+  last_cmd = game_get_last_command(game);
+  if (!last_cmd) return ERROR;
+  arg = command_get_arg(last_cmd);
+  if (!arg || arg[0][0] == '\0') return ERROR;
+
+  player = game_get_player(game);
+  if (!player) return ERROR;
+
+  for (i = 0; i < game_get_number_of_players(game); i++)
+  {
+    target_player = game_get_player_from_index(game, i);
+    if(target_player && strcasecmp(player_get_name(target_player), arg[0]) == 0)
+    {
+      target_id = player_get_id(target_player);
+      break;
+    }
+  }
+  if (target_id == NO_ID || target_id == player_get_id(player)) return ERROR;
+
+  if (player_set_collaborator(player, target_id) == OK)
+  {
+    game_set_chat_message(game, "Habeis formado un equipo.");
+    return OK;
+  }
+
+  return ERROR;
 }

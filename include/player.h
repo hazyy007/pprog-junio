@@ -173,4 +173,20 @@ Inventory *player_get_backpack(Player *player);
  */
 int player_get_number_of_backpack(Player*p);
 
+/**
+ * @brief Establece el colaborador del jugador
+ * @author Alejandro
+ * @param player puntero al jugador
+ * @param collaborator id del colaborador a asignar
+ * @return OK si tiene éxito, ERROR en caso contrario
+ */
+Status player_set_collaborator(Player *player, Id collaborator);
+
+/**
+ * @brief Obtiene el colaborador del jugador
+ * @author Alejandro
+ * @param player puntero al jugador
+ * @return el id del colaborador o NO_ID en caso de error
+ */
+Id player_get_collaborator(Player *player);
 #endif

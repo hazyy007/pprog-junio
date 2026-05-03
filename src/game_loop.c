@@ -19,30 +19,13 @@
 #include "game_rules.h"
 #include <time.h>
 
-BOOL game_loop_command_allows_turn_roll(CommandCode code);
 void game_loop_update_turn(Game *game, Command *command);
-
-BOOL game_loop_command_allows_turn_roll(CommandCode code)
-{
-  switch (code)
-  {
-  case TAKE:
-  case DROP:
-  case MOVE:
-  case INSPECT:
-  case USE:
-  case OPEN:
-    return TRUE;
-  default:
-    return FALSE;
-  }
-}
 
 void game_loop_update_turn(Game *game, Command *command)
 {
-  int random_num = 0;
   char turn_message[WORD_SIZE] = "";
 
+  /* Comprobaciones de seguridad basicas */
   if (!game || !command)
   {
     return;
@@ -53,23 +36,12 @@ void game_loop_update_turn(Game *game, Command *command)
     return;
   }
 
-  if (game_loop_command_allows_turn_roll(command_get_code(command)) == FALSE)
-  {
-    return;
-  }
-
-  random_num = rand() % 10;
-  if (random_num <= 2)
+  if (command_get_code(command) == MOVE)
   {
     game_next_turn(game);
-    sprintf(turn_message, "you rolled %d, next players turn", random_num);
+    sprintf(turn_message, "Te has movido. Turno del Jugador %d.", game_get_turn(game) + 1);
+    game_set_chat_message(game, turn_message);
   }
-  else
-  {
-    sprintf(turn_message, "you rolled %d, you continue", random_num);
-  }
-
-  game_set_chat_message(game, turn_message);
 }
 
 int main(int argc, char *argv[])

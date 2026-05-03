@@ -30,6 +30,7 @@ struct Player
   int nobj;                           /*!< Número de objetos en el inventario*/
   int health;                         /*!< Puntos de salud del jugador*/
   char *gdesc;                        /*!< Descripción gráfica del jugador*/
+  Id collaborator;                    /*!< Id del colaborador del jugador*/
 };
 
 Player *player_create(Id id)
@@ -58,7 +59,7 @@ Player *player_create(Id id)
   newPlayer->backpack = inventory_create(INVENTORY_SIZE);
   newPlayer->health = START_HEALTH;
   newPlayer->gdesc = NULL;
-
+  newPlayer->collaborator = NO_ID;
   return newPlayer;
 }
 
@@ -270,4 +271,23 @@ int player_get_number_of_backpack(Player*p){
     return -1;
   }
   return p->nobj;
+}
+
+Status player_set_collaborator(Player *player, Id collaborator)
+{ 
+  if (!player || collaborator == NO_ID)
+  {
+    return ERROR;
+  }
+  player->collaborator = collaborator;
+  return OK;
+}
+
+Id player_get_collaborator(Player *player)
+{ 
+  if (!player)
+  {
+    return NO_ID;
+  }
+  return player->collaborator;
 }
