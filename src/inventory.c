@@ -2,7 +2,7 @@
  * @brief Implementa el módulo de inventario
  *
  * @file inventory.c
- * @author Rodrigo
+ * @author 
  * @version 1.0
  * @date 23-03-2026
  * @copyright GNU Public License

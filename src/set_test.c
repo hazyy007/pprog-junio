@@ -2,7 +2,7 @@
  * @brief It tests set module
  *
  * @file set_test.c
- * @author RAHER
+ * @author 
  * @version 0.0
  * @date 17-03-2025
  * @copyright GNU Public License

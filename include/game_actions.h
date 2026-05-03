@@ -2,7 +2,7 @@
  * @brief Define la interfaz de actualización del juego (acciones)
  *
  * @file game_actions.h
- * @author Unai&Rodrigo
+ * @author
  * @version 1.0
  * @date 15-03-2026
  * @copyright GNU Public License

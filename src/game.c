@@ -2,7 +2,7 @@
  * @brief Implementa la lógica principal del juego
  *
  * @file game.c
- * @author Unai
+ * @author 
  * @version 2.0
  * @date 15-03-2026
  * @copyright GNU Public License

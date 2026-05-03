@@ -1,7 +1,7 @@
 /**
  * @brief Archivo de prueba para el módulo object
  * @file object_test.c
- * @author Rodrigo
+ * @author 
  * @version 1.0
  * @date 15-03-2025
  */

@@ -2,7 +2,7 @@
  * @brief Implementa el módulo de enlaces
  *
  * @file link.c
- * @author Unai
+ * @author 
  * @version 1.0
  * @date 13-04-2026
  * @copyright GNU Public License

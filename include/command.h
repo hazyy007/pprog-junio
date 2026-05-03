@@ -2,7 +2,7 @@
  * @brief Define la interfaz del intérprete de comandos
  *
  * @file command.h
- * @author Unai
+ * @author 
  * @version 1.0
  * @date 15-2-26
  * @copyright GNU Public License

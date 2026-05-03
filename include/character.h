@@ -2,7 +2,7 @@
  * @brief Define el módulo del personaje
  *
  * @file character.h
- * @author Rodrigo
+ * @author 
  * @version 2.0
  * @date 23-02-2026
  * @copyright GNU Public License
@@ -19,7 +19,7 @@ typedef struct _Character Character;
 
 /**
   * @brief Crea un nuevo personaje
-  * @author Rodrigo
+  * @author 
   *
   * @param id El id del personaje a crear
   * @return Un puntero al personaje creado,NULL si hay error
@@ -28,7 +28,7 @@ Character *character_create(Id id);
 
 /**
   * @brief Destruye un personaje
-  * @author Rodrigo
+  * @author 
   *
   * @param character Un puntero a personaje a destruir
   */
@@ -36,7 +36,7 @@ void character_destroy(Character *character);
 
 /**
   * @brief Obtiene el id de un personaje
-  * @author Rodrigo
+  * @author 
   *
   * @param character Un puntero a personaje
   * @return El id del personaje
@@ -45,7 +45,7 @@ Id character_get_id(Character *character);
 
 /**
   * @brief Obtiene el nombre de un personaje
-  * @author Rodrigo
+  * @author 
   *
   * @param character Un puntero a personaje
   * @return El nombre del personaje
@@ -54,7 +54,7 @@ char *character_get_name(Character *character);
 
 /**
   * @brief Establece el nombre de un personaje
-  * @author Rodrigo
+  * @author 
   *
   * @param character Un puntero a personaje
   * @param name Una cadena con el nuevo nombre
@@ -148,7 +148,7 @@ Status character_set_message(Character *character, char *message);
 void character_print( Character *character);
 /**
   * @brief Devuelve el id del personaje que sigue
-  * @author Unai Amondarain
+  * @author 
   *
   * @param character Un puntero al personaje
   * @return El id de la entidad seguida o NO_ID si hay error
@@ -156,7 +156,7 @@ void character_print( Character *character);
 Id character_get_following(Character* character);
 /**
   * @brief Cambia el id de la entidad a la que sigue el personaje
-  * @author Unai Amondarain
+  * @author 
   *
   * @param character Un puntero al personaje
   * @param id Id de la entidad a la que seguirá

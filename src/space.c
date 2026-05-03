@@ -2,7 +2,7 @@
  * @brief Implementa el módulo de espacios
  *
  * @file space.c
- * @author Unai
+ * @author 
  * @version 3.0
  * @date 16-03-2026
  * @copyright GNU Public License

@@ -2,7 +2,7 @@
  * @brief Implementa la carga de datos del juego desde fichero
  *
  * @file game_reader.c
- * @author Unai
+ * @author 
  * @version 1.0
  * @date 15-03-2026
  * @copyright GNU Public License

@@ -2,7 +2,7 @@
  * @brief Implementa el motor gráfico textual
  *
  * @file graphic_engine.c
- * @author Unai
+ * @author 
  * @version 2.0
  * @date 16-03-2026
  * @copyright GNU Public License

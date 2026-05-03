@@ -2,7 +2,7 @@
  * @brief Define la interfaz del módulo de espacios
  *
  * @file space.h
- * @author Unai
+ * @author 
  * @version 3.0
  * @date 16-03-2026
  * @copyright GNU Public License
@@ -187,4 +187,12 @@ BOOL space_get_discovered(Space* space);
  */
 int space_get_n_characters(Space* space);
 
+/**
+ * @brief Encuentra la gdecs de un espacio a partir de su índice
+ * @param space Puntero al espacio
+ * @param index Índice de la gdesc a obtener
+ * @return La gdesc correspondiente al índice o NULL en caso de error
+ */
+
+char* space_get_gdes_from_index(Space* space, int index);
 #endif

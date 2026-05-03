@@ -2,7 +2,7 @@
  * @brief It defines the object interface
  *
  * @file object.h
- * @author Rodrigo
+ * @author 
  * @version 1.0
  * @date (3/2/2026)
  */

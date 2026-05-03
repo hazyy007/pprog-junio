@@ -2,7 +2,7 @@
  * @brief Implementa el módulo de conjuntos
  *
  * @file set.c
- * @author Unai
+ * @author 
  * @version 1.0
  * @date 15-03-2026
  * @copyright GNU Public License

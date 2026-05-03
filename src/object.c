@@ -2,7 +2,7 @@
  * @brief It implements the object module
  *
  * @file object.c
- * @author Rodrigo
+ * @author 
  * @version 1.0
  * @date 15-02-2026
  */

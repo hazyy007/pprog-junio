@@ -2,7 +2,7 @@
  * @brief Implementa las acciones del juego
  *
  * @file game_actions.c
- * @author Unai&Rodrigo
+ * @author 
  * @version 1.0
  * @date 15-03-2026
  * @copyright GNU Public License
