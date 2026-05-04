@@ -28,8 +28,8 @@
 
 #define PRINT_PASSED_PERCENTAGE printf("Tests passed %d%%\n", ((__test_passed * 100) / __test_counter))
 
-static int __test_counter = 0;
-static int __test_passed  = 0;
-static int __pass = 0;
+extern int __test_counter = 0;
+extern int __test_passed = 0;
+extern int __pass = 0;
 
 #endif

@@ -3,6 +3,9 @@
 
 static int total_tests = 0;
 static int passed_tests = 0;
+int __test_counter = 0;
+int __test_passed  = 0;
+int __pass = 0;
 
 void test_print_result(int result) {
     if (result) {

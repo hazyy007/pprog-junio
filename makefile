@@ -75,6 +75,10 @@ $(OBJDIR)/object_test.o: $(HEADERS)/object_test.h $(HEADERS)/object.h $(HEADERS)
 $(OBJDIR)/player_test.o: $(HEADERS)/player_test.h $(HEADERS)/player.h $(HEADERS)/types.h $(HEADERS)/test.h $(HEADERS)/inventory.h
 $(OBJDIR)/link_test.o: $(HEADERS)/link_test.h $(HEADERS)/link.h $(HEADERS)/types.h $(HEADERS)/test.h
 
+# Run the program.
+run: castle
+	./castle castle.dat
+
 # Remove all generated files and folders.
 clean:
 	rm -rf $(OBJDIR) doc $(EXES)

@@ -232,14 +232,13 @@ void test1_space_get_character() {
     Space *s;
     s = space_create(1);
     space_set_character(s, 20);
-    PRINT_TEST_RESULT(space_get_character(s) == 20);
+    PRINT_TEST_RESULT(space_get_character(s, 0) == 20);
     space_destroy(s);
 }
-
 void test2_space_get_character() {
     Space *s;
     s = space_create(1);
-    PRINT_TEST_RESULT(space_get_character(s) == NO_ID);
+    PRINT_TEST_RESULT(space_get_character(s, 0) == NO_ID);
     space_destroy(s);
 }
 
@@ -251,7 +250,8 @@ void test1_space_set_discovered()
   space_destroy(s);
 }
 
-void test2_space_set_discovered() {
+void test2_space_set_discovered() 
+{
   Space *s = NULL;
   PRINT_TEST_RESULT(space_set_discovered(s, TRUE) == ERROR);
 }
