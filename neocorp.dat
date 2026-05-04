@@ -1,0 +1,82 @@
+#p:1|Runner|>->|1|10|5|
+#p:2|Hacker|<+>|6|10|5|
+
+#s:1|Callejon|.===CALLE===.|.   _  _    .|.  I II I   .|.  I NEON   .|.==II==II===.|
+#s:2|Entrada|..-PUERTA-.. |.. [LOCK]  ..|..   ><    ..|.. _______ ..|=============|
+#s:3|Recepcion|.-----------.|. [WELCOME] .|.   ___     .|.  I   I    .|.-----------.|
+#s:4|Pasillo_E|=============|    --->     |   PASILLO   |    --->     |=============|
+#s:5|Pasillo_O|=============|    <---     |   PASILLO   |    <---     |=============|
+#s:6|Mantenimiento|.---TOOLS---.|.  X   _    .|. / \ I I   .|. \_/ I_I   .|.-----------.|
+#s:7|Seguridad|.--SECURE---.|.  [CAM_1]  .|.    \ /    .|.   ( ! )   .|.-----------.|
+#s:8|Servidores|II[SERVER] II|II[======] II|II[ 1011 ] II|II[======] II|II_________II|
+#s:9|Archivo|.--ARCHIVO--.|. [===]     .|. [===] [=] .|.       [=] .|.-----------.|
+#s:10|Laboratorio|.---LABO----.|.    ()     .|.   /II\    .|.  ======   .|.-----------.|
+#s:11|Pruebas|.--TESTING--.|.  !DANGER! .|.    / \    .|.   /___\   .|.-----------.|
+#s:12|Oficina|.--OFFICE---.|.    ___    .|.   ICEOI   .|.  -------  .|.-----------.|
+#s:13|Ascensor|.--ELEVAT---.|.  [ 12 ]   .|.  I====I   .|.  I    I   .|.-----------.|
+#s:14|Nucleo|.---CORE----.|.   /   \   .|.  ( CPU )  .|.   \___/   .|.-----------.|
+#s:15|Azotea|////^^^//////|//  CIELO  //|/ HELIPUERTO/|/    (H)    /|/////////////|
+
+#l:11|RutaN1|1|2|0|1|
+#l:12|RutaS1|2|1|1|1|
+#l:21|PuertaEntrada|2|3|0|0|
+#l:22|VueltaEntrada|3|2|1|1|
+#l:31|HaciaOeste|3|5|3|1|
+#l:32|VuelveOeste|5|3|2|1|
+#l:33|HaciaEste|3|4|2|1|
+#l:34|VuelveEste|4|3|3|1|
+#l:41|HaciaMantenimiento|4|6|1|1|
+#l:42|VuelveMantenimiento|6|4|0|1|
+#l:51|HaciaSeguridad|5|7|0|1|
+#l:52|VuelveSeguridad|7|5|1|1|
+#l:61|PuertaServidores|3|8|0|0|
+#l:62|VuelveServidores|8|3|1|1|
+#l:71|HaciaArchivo|8|9|3|1|
+#l:72|VuelveArchivo|9|8|2|1|
+#l:81|PuertaLaboratorio|8|10|2|0|
+#l:82|VuelveLaboratorio|10|8|3|1|
+#l:91|HaciaPruebas|10|11|0|1|
+#l:92|VuelvePruebas|11|10|1|1|
+#l:101|HaciaAscensor|8|13|0|1|
+#l:102|VuelveAscensor|13|8|1|1|
+#l:111|HaciaOficina|13|12|2|1|
+#l:112|VuelveOficina|12|13|3|1|
+#l:121|PuertaNucleo|13|14|0|0|
+#l:122|VuelveNucleo|14|13|1|1|
+#l:131|EscotillaAzotea|14|15|4|0|
+#l:132|BajaAzotea|15|14|5|1|
+
+#c:1|Informante|(O_o) |1|5|1|Psst! Usa la TarjetaBasica para abrir la puerta norte. Yo te cubro.|
+#c:2|Dron_Vigia|[!_!] |2|3|0|ALERTA. INTRUSO DETECTADO. ELIMINAR.|
+#c:3|Ingeniero|(-.-) |6|8|1|Soy el mecanico. Reclutame y te ayudare a salir de aqui.|
+#c:4|Ciborg_Sgt|[X_X] |7|10|0|SISTEMAS ARMADOS. PREPARATE PARA MORIR.|
+#c:5|IA_Aliada|<0_0> |8|10|1|Bienvenido. El codigo del laboratorio esta en el archivo oeste.|
+#c:6|Cientifico|(o_o) |10|6|1|Cuidado en la zona de pruebas, el perro robotico enloquecio.|
+#c:7|PerroRobot|/A_A\ |11|8|0|GRRRR... ZZZZT... ELIMINANDO AMENAZA...|
+#c:8|NeoCEO_IA|($ $) |14|15|0|No te llevaras mi Modulo de Datos, maldita rata de los bajos fondos.|
+
+#o:1|Cable|1|Un trozo de cable de fibra optica pelado.|0|1|-1|-1|
+#o:2|Bebida|1|Refresco sintetico radiactivo. Cura un poco.|1|1|-1|-1|
+#o:3|TarjetaBasica|2|Llave de acceso corporativo a Recepcion.|0|1|-1|21|
+#o:4|DronRoto|2|Restos de un vigilante. Muy pesado.|0|0|-1|-1|
+#o:5|GafasRA|3|Gafas de Realidad Aumentada.|0|1|-1|-1|
+#o:6|LlaveInglesa|6|Herramienta de Mantenimiento.|0|1|-1|-1|
+#o:7|TarjetaNivel2|6|Llave de la zona de Servidores.|0|1|-1|61|
+#o:8|Botiquin|6|Kit medico militar. Cura mucho.|5|1|-1|-1|
+#o:9|PistolaEMP|7|Arma de pulso electromagnetico.|0|1|-1|-1|
+#o:10|Inyector|7|Jeringa con nanobots medicos.|3|1|-1|-1|
+#o:11|DiscoDuro|8|Datos cifrados de seguridad.|0|1|-1|-1|
+#o:12|PlacaBase|8|Circuitos impresos quemados.|0|1|-1|-1|
+#o:13|Documento|9|Registro de experimentos oscuros.|0|1|-1|-1|
+#o:14|Password|9|Codigo digital que abre el Laboratorio.|0|1|-1|81|
+#o:15|BrazoBionico|10|Prototipo cibernetico.|0|1|-1|-1|
+#o:16|Bateria|10|Celda de energia estable.|2|1|-1|-1|
+#o:17|Chatarra|11|Piezas sueltas. No sirven de nada.|0|1|-1|-1|
+#o:18|TarjetaVIP|12|El pase supremo al Nucleo.|0|1|-1|121|
+#o:19|HackTool|12|Dispositivo para reventar cifrados.|0|1|-1|-1|
+#o:20|PaseAzotea|14|Tarjeta de evacuacion medica.|0|1|-1|131|
+#o:21|ModuloDatos|14|La informacion confidencial que has venido a robar.|0|1|-1|-1|
+#o:22|Pila|3|Fuente de alimentacion menor.|1|1|-1|-1|
+#o:23|FocoFalso|4|Una luz fundida en el pasillo.|0|0|-1|-1|
+#o:24|BonsaiSintetico|12|Decoracion de la oficina.|0|0|-1|-1|
+#o:25|AntenaRota|15|Torre de comunicaciones averiada.|0|0|-1|-1|

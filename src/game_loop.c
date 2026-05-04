@@ -127,7 +127,7 @@ printf("se crea");
       if (last_input)
       {
         last_input[strcspn(last_input, "\n")] = 0;
-        fprintf(log_file, "%s: %s\n", last_input, game_get_last_command_status(game) == OK ? "OK" : "ERROR");
+        fprintf(log_file, "%s: %s (P%d)\n", last_input, game_get_last_command_status(game) == OK ? "OK" : "ERROR", game_get_turn(game) + 1);
       }
     }
 
@@ -136,7 +136,7 @@ printf("se crea");
     
     /* Actualiza la interfaz grafica post-comando */
     graphic_engine_paint_game(gengine, game, game_get_last_command_status(game), TRUE);
-    sleep(1);
+    sleep(2);
     if (!determinista)
     {
       game_rules_update(rules, game);
