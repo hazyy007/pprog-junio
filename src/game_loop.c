@@ -82,7 +82,7 @@ int main(int argc, char *argv[])
       srand(time(NULL)); /* Semilla basada en el tiempo para aleatoriedad real */
   }
   printf("Funciona\n");
-printf("se abre");
+printf("se abre\n");
   /* Inicializacion del juego desde archivo */
   if (game_create_from_file(&game, argv[1]) == ERROR)
   {
@@ -93,7 +93,7 @@ printf("se abre");
     }
     return 1;
   }
-printf("se crea");
+printf("se crea\n");
   /* Inicializacion del motor grafico */
   if ((gengine = graphic_engine_create()) == NULL)
   {

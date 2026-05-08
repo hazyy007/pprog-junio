@@ -12,13 +12,13 @@ OBJECTS = $(OBJDIR)/command.o $(OBJDIR)/game_actions.o $(OBJDIR)/game_loop.o $(O
 TEST_HELPERS = $(OBJDIR)/test.o
 TESTS = space_test set_test character_test object_test player_test link_test inventory_test
 
-EXES = castle $(TESTS)
+EXES = neocorp $(TESTS)
 
 .PHONY: all clean tests doxygen
 
 # The main task
 all: $(OBJECTS)
-	$(CC) -o castle $(OBJECTS) -L$(LIBS) -lscreen
+	$(CC) -o neocorp $(OBJECTS) -L$(LIBS) -lscreen
 
 # Generates the object files defined below
 $(OBJDIR)/%.o: $(SRC)/%.c
@@ -76,8 +76,12 @@ $(OBJDIR)/player_test.o: $(HEADERS)/player_test.h $(HEADERS)/player.h $(HEADERS)
 $(OBJDIR)/link_test.o: $(HEADERS)/link_test.h $(HEADERS)/link.h $(HEADERS)/types.h $(HEADERS)/test.h
 
 # Run the program.
-run: castle
-	./castle castle.dat
+run: neocorp
+	./neocorp neocorp.dat
+rund: neocorp
+	./neocorp neocorp.dat -d
+runl: neocorp
+	./neocorp neocorp.dat -l log.txt
 
 # Remove all generated files and folders.
 clean:
