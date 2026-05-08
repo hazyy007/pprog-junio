@@ -82,6 +82,8 @@ rund: neocorp
 	./neocorp neocorp.dat -d
 runl: neocorp
 	./neocorp neocorp.dat -l log.txt
+rundl: neocorp
+	./neocorp neocorp.dat -d -l log.txt
 
 # Remove all generated files and folders.
 clean:
