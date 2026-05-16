@@ -266,11 +266,13 @@ Inventory *player_get_backpack(Player *player)
   }
   return player->backpack;
 }
-int player_get_number_of_backpack(Player*p){
-  if(!p){
+int player_get_number_of_backpack(Player *p)
+{
+  if (!p)
+  {
     return -1;
   }
-  return p->nobj;
+  return inventory_get_max_objs(p->backpack);
 }
 
 Status player_set_collaborator(Player *player, Id collaborator)

@@ -851,12 +851,14 @@ Status game_actions_use(Game *game)
 Status game_actions_open(Game *game)
 {
   Player *player = NULL;
+  Player *collaborator = NULL;
   Command *last_cmd = NULL;
   Object *object = NULL;
   Link *link = NULL;
   char **arg = NULL;
-  Id object_id = NO_ID, player_loc = NO_ID;
+  Id object_id = NO_ID, player_loc = NO_ID, collaborator_id = NO_ID;
   int i = 0, n_links = 0;
+  BOOL has_object = FALSE;
 
   if (!game)
   {
@@ -913,7 +915,21 @@ Status game_actions_open(Game *game)
   {
     return ERROR;
   }
-  if (!player_has_object(player, object_id))
+  has_object = player_has_object(player, object_id);
+  collaborator_id = player_get_collaborator(player);
+  if (has_object == FALSE && collaborator_id != NO_ID)
+  {
+    for (i = 0; i < game_get_number_of_players(game); i++)
+    {
+      collaborator = game_get_player_from_index(game, i);
+      if (collaborator && player_get_id(collaborator) == collaborator_id)
+      {
+        has_object = player_has_object(collaborator, object_id);
+        break;
+      }
+    }
+  }
+  if (has_object == FALSE)
   {
     return ERROR;
   }
@@ -955,6 +971,7 @@ Status game_actions_save(Game *game){
 }
 Status game_actions_load(Game *game){
   Command *last_cmd = NULL;
+  FILE *file = NULL;
   Status s;
   char **arg = NULL;
     if (!game)
@@ -973,27 +990,40 @@ Status game_actions_load(Game *game){
   {
     return ERROR;
   }
- s=game_managment_load_players(game,arg[0]);
- if(!s){
-  return ERROR;
- }
- s=game_managment_load_spaces(game,arg[0]);
- if(!s){
-  return ERROR;
- }
- s=game_managment_load_objects(game,arg[0]);
- if(!s){
-  return ERROR;
- }
- s=game_managment_load_links(game,arg[0]);
- if(!s){
-  return ERROR;
- }
- s=game_managment_load_characters(game,arg[0]);
- if(!s){
-  return ERROR;
- }
- return s;
+
+  file = fopen(arg[0], "r");
+  if (!file)
+  {
+    return ERROR;
+  }
+  fclose(file);
+
+  if (game_reset(game) == ERROR)
+  {
+    return ERROR;
+  }
+
+  s = game_managment_load_spaces(game, arg[0]);
+  if (!s){
+    return ERROR;
+  }
+  s = game_managment_load_players(game, arg[0]);
+  if (!s){
+    return ERROR;
+  }
+  s = game_managment_load_objects(game, arg[0]);
+  if (!s){
+    return ERROR;
+  }
+  s = game_managment_load_links(game, arg[0]);
+  if (!s){
+    return ERROR;
+  }
+  s = game_managment_load_characters(game, arg[0]);
+  if (!s){
+    return ERROR;
+  }
+  return s;
 }
 
 Status game_actions_colab(Game *game)
@@ -1025,7 +1055,8 @@ Status game_actions_colab(Game *game)
   }
   if (target_id == NO_ID || target_id == player_get_id(player)) return ERROR;
 
-  if (player_set_collaborator(player, target_id) == OK)
+  if (player_set_collaborator(player, target_id) == OK &&
+      player_set_collaborator(target_player, player_get_id(player)) == OK)
   {
     game_set_chat_message(game, "Habeis formado un equipo.");
     return OK;

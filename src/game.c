@@ -201,6 +201,80 @@ Status game_destroy(Game *game)
   return OK;
 }
 
+Status game_reset(Game *game)
+{
+  int i;
+
+  /* Comprueba si el motor de juego esta asignado */
+  if (!game)
+  {
+    return ERROR;
+  }
+
+  /* Libera las entidades cargadas, pero mantiene el ultimo comando vivo */
+  for (i = 0; i < game->n_spaces; i++)
+  {
+    if (game->spaces[i])
+    {
+      space_destroy(game->spaces[i]);
+      game->spaces[i] = NULL;
+    }
+  }
+
+  for (i = 0; i < game->n_players; i++)
+  {
+    if (game->players[i])
+    {
+      player_destroy(game->players[i]);
+      game->players[i] = NULL;
+    }
+  }
+
+  for (i = 0; i < game->n_links; i++)
+  {
+    if (game->link[i])
+    {
+      link_destroy(game->link[i]);
+      game->link[i] = NULL;
+    }
+  }
+
+  for (i = 0; i < game->n_objects; i++)
+  {
+    if (game->objects[i])
+    {
+      object_destroy(game->objects[i]);
+      game->objects[i] = NULL;
+    }
+  }
+
+  for (i = 0; i < game->n_characters; i++)
+  {
+    if (game->characters[i])
+    {
+      character_destroy(game->characters[i]);
+      game->characters[i] = NULL;
+    }
+  }
+
+  for (i = 0; i < MAX_PLAYERS; i++)
+  {
+    game->messages[i][0] = '\0';
+  }
+
+  game->n_spaces = 0;
+  game->n_players = 0;
+  game->n_links = 0;
+  game->n_objects = 0;
+  game->n_characters = 0;
+  game->turn = 0;
+  game->finished = 0;
+  game->object_inspection[0] = '\0';
+  game->last_status = OK;
+
+  return OK;
+}
+
 Space *game_get_space(Game *game, Id id)
 {
   int i;
@@ -388,7 +462,7 @@ Status game_set_last_command(Game *game, Command *command)
   /* Comprueba la validez de los parametros */
   if (!game || !command)
   {
-    game_set_last_command_status(game, ERROR);
+    return ERROR;
   }
 
   game->last_command = command;
@@ -552,13 +626,18 @@ Character *game_get_character(Game *game, Id id)
 
 Character *game_get_character_at(Game *game, int position)
 {
-  /* Comprueba que el juego exista y la posición sea válida */
+  /* Comprueba que el juego exista y la posicion sea valida */
   if (!game || position < 0 || position >= game->n_characters)
   {
     return NULL;
   }
 
   return game->characters[position];
+}
+
+Character *game_get_character_from_id(Game *game, Id id)
+{
+  return game_get_character(game, id);
 }
 
 Status game_add_object(Game *game, Object *obj)
@@ -590,7 +669,7 @@ Status game_add_character(Game *game, Character *character)
 Status game_add_space(Game *game, Space *space)
 {
   /* Comprueba la validez y capacidad de espacios */
-  if ((space == NULL) || (game->n_spaces >= MAX_SPACES))
+  if (!game || !space || game->n_spaces >= MAX_SPACES)
   {
     return ERROR;
   }
@@ -603,7 +682,7 @@ Status game_add_space(Game *game, Space *space)
 Id game_get_space_id_at(Game *game, int position)
 {
   /* Comprueba la validez de la posicion y del juego */
-  if (position < 0 || position >= game->n_spaces || !game)
+  if (!game || position < 0 || position >= game->n_spaces)
   {
     return NO_ID;
   }

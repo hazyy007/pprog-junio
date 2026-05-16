@@ -2,7 +2,7 @@
  * @brief Define la interfaz principal del juego
  *
  * @file game.h
- * @author 
+ * @author
  * @version 2.0
  * @date 15-03-2026
  * @copyright GNU Public License
@@ -55,6 +55,14 @@ Status game_create_from_file(Game **game, char *filename);
  * @return OK si se destruye con éxito, ERROR en caso contrario.
  */
 Status game_destroy(Game *game);
+
+/**
+ * @brief Vacía el estado cargado del juego sin destruir el comando actual.
+ * @author
+ * @param game Puntero al juego.
+ * @return OK si se reinicia con éxito, ERROR en caso contrario.
+ */
+Status game_reset(Game *game);
 
 /**
  * @brief Añade un nuevo espacio al array del juego.

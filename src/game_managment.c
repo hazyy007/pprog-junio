@@ -21,6 +21,7 @@ Status game_managment_load_spaces(Game *game, char *filename)
     char *endptr;
     char gdesc[GDESC_ROWS][GDESC_COLS];
     int i;
+    int discovered = 0;
     Status des;
 
     /* Comprueba la validez del nombre de archivo */
@@ -75,6 +76,12 @@ Status game_managment_load_spaces(Game *game, char *filename)
                 if (des != ERROR)
                 {
                     space_set_gdesc(space, gdesc);
+                }
+                toks = strtok(NULL, "|");
+                if (toks)
+                {
+                    discovered = (int)strtol(toks, &endptr, 10);
+                    space_set_discovered(space, discovered ? TRUE : FALSE);
                 }
 
                 game_add_space(game, space);
@@ -209,6 +216,7 @@ Status game_managment_load_characters(Game *game, char *filename)
     char message[101] = "";
     char *toks = NULL;
     Id id = NO_ID, location_id = NO_ID;
+    Id following = NO_ID;
     int health = 0;
     int friendly = 0;
     Character *character = NULL;
@@ -247,6 +255,15 @@ Status game_managment_load_characters(Game *game, char *filename)
             friendly = (int)strtol(toks, &endptr, 10);
             toks = strtok(NULL, "|");
             strcpy(message, toks);
+            toks = strtok(NULL, "|");
+            if (toks)
+            {
+                following = strtol(toks, &endptr, 10);
+            }
+            else
+            {
+                following = NO_ID;
+            }
 
             /* Creacion e integracion del personaje en el motor de juego */
             character = character_create(id);
@@ -257,6 +274,7 @@ Status game_managment_load_characters(Game *game, char *filename)
                 character_set_health(character, health);
                 character_set_friendly(character, friendly);
                 character_set_message(character, message);
+                character_set_following(character, following);
 
                 game_add_character(game, character);
                 game_set_character_location(game, location_id, id);
@@ -282,6 +300,7 @@ Status game_managment_load_players(Game *game, char *filename)
     char gdesc[WORD_SIZE] = "";
     char *toks = NULL;
     Id id = NO_ID, location_id = NO_ID;
+    Id obj_id = NO_ID;
     int health = 0, max_objs = 0;
     Player *player = NULL;
     Status status = OK;
@@ -328,6 +347,25 @@ Status game_managment_load_players(Game *game, char *filename)
                 player_set_location(player, location_id);
                 player_set_health(player, health);
                 inventory_set_max_objs(player_get_backpack(player), max_objs);
+                toks = strtok(NULL, "|");
+                if (toks != NULL)
+                {
+                    obj_id = strtol(toks, &endptr, 10);
+                    if (endptr != toks && obj_id != NO_ID)
+                    {
+                        player_set_collaborator(player, obj_id);
+                    }
+                    toks = strtok(NULL, "|");
+                }
+                while (toks != NULL)
+                {
+                    obj_id = strtol(toks, &endptr, 10);
+                    if (endptr != toks && obj_id != NO_ID)
+                    {
+                        player_add_object(player, obj_id);
+                    }
+                    toks = strtok(NULL, "|");
+                }
 
                 game_set_player(game, player);
 
@@ -419,12 +457,13 @@ Status game_managment_load_links(Game *game, char *filename)
     return status;
 }
 Status game_managment_save_game(Game *game, char *filename){
-     FILE *file = NULL;
-    int i;
-    Player*p;
-    Character*c;
-    Object*o;
-    Space*s;
+    FILE *file = NULL;
+    int i, j, max_objs;
+    Id obj_id;
+    Player *p;
+    Character *c;
+    Object *o;
+    Space *s;
     Link *e;
     /* Comprueba la validez del nombre de archivo */
     if (!filename||!game)
@@ -438,41 +477,55 @@ Status game_managment_save_game(Game *game, char *filename){
     {
         return ERROR;
     }
-    if(game_get_number_of_players(game)<0){
-        return ERROR;
-    }
     for(i=0;i<game_get_number_of_players(game);i++){
         p=game_get_player_from_index(game,i);
-        fprintf(file, "#p:%ld|%s|%s|%ld|%d|%d|\n", player_get_id(p),player_get_name(p),player_get_gdesc(p),player_get_location(p),player_get_health(p),player_get_number_of_backpack(p));
-    }
-    if(game_get_number_of_characters(game)<0){
-        return ERROR;
+        if(!p){
+            fclose(file);
+            return ERROR;
+        }
+        max_objs = inventory_get_max_objs(player_get_backpack(p));
+        fprintf(file, "#p:%ld|%s|%s|%ld|%d|%d|%ld", player_get_id(p),player_get_name(p),player_get_gdesc(p),player_get_location(p),player_get_health(p),max_objs,player_get_collaborator(p));
+        for(j=0;j<max_objs;j++){
+            obj_id = player_get_object(p, j);
+            if(obj_id != NO_ID){
+                fprintf(file, "|%ld", obj_id);
+            }
+        }
+        fprintf(file, "|\n");
     }
     for(i=0;i<game_get_number_of_characters(game);i++){
         c=game_get_character_from_index(game,i);
-        fprintf(file, "#c:%ld|%s|%s|%ld|%ld|%d|%s|%ld|\n", character_get_id(c),character_get_name(c),character_get_gdesc(c),game_get_character_location(game,character_get_id(c)),character_get_id(c),character_get_friendly(c),character_get_message(c),character_get_following(c));
-    }
-    if(game_get_number_of_objects(game)<0){
-        return ERROR;
+        if(!c){
+            fclose(file);
+            return ERROR;
+        }
+        fprintf(file, "#c:%ld|%s|%s|%ld|%d|%d|%s|%ld|\n", character_get_id(c),character_get_name(c),character_get_gdesc(c),game_get_character_location(game,character_get_id(c)),character_get_health(c),character_get_friendly(c),character_get_message(c),character_get_following(c));
     }
     for(i=0;i<game_get_number_of_objects(game);i++){
         o=game_get_object_from_index(game,i);
-        fprintf(file, "#o:%ld|%s|%ld|%ld|%s|%d|%d|%ld|%ld|\n", object_get_id(o),object_get_name(o),game_get_object_location(game,object_get_id(o)),game_get_character_location(game,object_get_id(o)),object_get_desc(o),object_get_health(o),object_get_movable(o),object_get_dependency(o),object_get_open(o));
-    }
-    if(game_get_number_of_space(game)<0){
-        return ERROR;
+        if(!o){
+            fclose(file);
+            return ERROR;
+        }
+        fprintf(file, "#o:%ld|%s|%ld|%s|%d|%d|%ld|%ld|\n", object_get_id(o),object_get_name(o),game_get_object_location(game,object_get_id(o)),object_get_desc(o),object_get_health(o),object_get_movable(o),object_get_dependency(o),object_get_open(o));
     }
     for(i=0;i<game_get_number_of_space(game);i++){
         s=game_get_space_from_index(game,i);
+        if(!s){
+            fclose(file);
+            return ERROR;
+        }
         fprintf(file, "#s:%ld|%s|%s|%s|%s|%s|%s|%d|\n",space_get_id(s),space_get_name(s),space_get_gdes_from_index(s,0),space_get_gdes_from_index(s,1),space_get_gdes_from_index(s,2),space_get_gdes_from_index(s,3),space_get_gdes_from_index(s,4),space_get_discovered(s));
        }  
-if(game_get_number_of_links(game)<0){
-    return ERROR;
-}
     for(i=0;i<game_get_number_of_links(game);i++){
         e=game_get_link_from_index(game,i);
+        if(!e){
+            fclose(file);
+            return ERROR;
+        }
         fprintf(file,"#l:%ld|%s|%ld|%ld|%d|%d|\n",link_get_id(e),link_get_name(e),link_get_origin(e),link_get_destination(e),link_get_direction(e),link_get_open(e));
     }
 
+    fclose(file);
     return OK;
 }

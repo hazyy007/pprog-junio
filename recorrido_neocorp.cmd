@@ -1,5 +1,5 @@
 chat Informante
-team Hacker
+colab Hacker
 move north
 attack Dron_Vigia
 take TarjetaBasica
