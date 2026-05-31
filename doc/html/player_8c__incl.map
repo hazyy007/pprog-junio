@@ -1,0 +1,19 @@
+<map id="src/player.c" name="src/player.c">
+<area shape="rect" id="Node000001" title="Implementación del módulo de jugador." alt="" coords="136,5,232,31"/>
+<area shape="rect" id="Node000002" href="$player_8h.html" title="Define la interfaz del módulo de jugador." alt="" coords="5,79,80,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="162,33,79,75,77,70,160,28"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="104,79,171,104"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="179,32,155,69,150,66,174,30"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="195,79,266,104"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="194,30,218,66,213,69,189,32"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="290,79,361,104"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="208,28,291,70,289,75,206,33"/>
+<area shape="rect" id="Node000003" href="$types_8h.html" title="It defines common types for the whole project." alt="" coords="15,299,86,324"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="41,105,28,152,26,188,30,225,45,285,40,286,25,226,21,189,23,152,36,104"/>
+<area shape="rect" id="Node000004" href="$inventory_8h.html" title="Inventario." alt="" coords="38,152,133,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="52,103,74,139,69,142,47,106"/>
+<area shape="poly" id="edge6_Node000004_Node000003" title=" " alt="" coords="85,178,59,286,54,285,80,177"/>
+<area shape="rect" id="Node000005" href="$set_8h.html" title="Define la interfaz del módulo de conjuntos." alt="" coords="89,225,143,251"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="93,177,108,212,103,214,88,179"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="107,253,72,290,69,287,103,249"/>
+</map>

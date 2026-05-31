@@ -2,7 +2,7 @@
  * @brief Define el módulo del personaje
  *
  * @file character.h
- * @author 
+ * @author Fernando
  * @version 2.0
  * @date 23-02-2026
  * @copyright GNU Public License
@@ -12,14 +12,17 @@
 #define CHARACTER_H
 
 #include "types.h"
+/** @brief Número máximo de personajes que puede almacenar el juego. */
 #define MAX_CHARACTERS 100
+/** @brief Longitud máxima del nombre de un personaje. */
 #define CHARACTER_NAME_LEN 30
 
+/** @brief Tipo opaco que representa a un personaje. */
 typedef struct _Character Character;
 
 /**
   * @brief Crea un nuevo personaje
-  * @author 
+  * @author Fernando
   *
   * @param id El id del personaje a crear
   * @return Un puntero al personaje creado,NULL si hay error
@@ -28,7 +31,7 @@ Character *character_create(Id id);
 
 /**
   * @brief Destruye un personaje
-  * @author 
+  * @author Fernando
   *
   * @param character Un puntero a personaje a destruir
   */
@@ -36,7 +39,7 @@ void character_destroy(Character *character);
 
 /**
   * @brief Obtiene el id de un personaje
-  * @author 
+  * @author Fernando
   *
   * @param character Un puntero a personaje
   * @return El id del personaje
@@ -45,7 +48,7 @@ Id character_get_id(Character *character);
 
 /**
   * @brief Obtiene el nombre de un personaje
-  * @author 
+  * @author Fernando
   *
   * @param character Un puntero a personaje
   * @return El nombre del personaje
@@ -54,7 +57,7 @@ char *character_get_name(Character *character);
 
 /**
   * @brief Establece el nombre de un personaje
-  * @author 
+  * @author Fernando
   *
   * @param character Un puntero a personaje
   * @param name Una cadena con el nuevo nombre
@@ -64,7 +67,7 @@ Status character_set_name(Character *character, char *name);
 
 /**
   * @brief Obtiene la descripción gráfica de un personaje
-  * @author Profesores PPROG
+  * @author Fernando
   *
   * @param character Un puntero al personaje
   * @return La descripción gráfica del personaje
@@ -73,7 +76,7 @@ Status character_set_name(Character *character, char *name);
 
 /**
   * @brief Establece la descripción gráfica de un personaje
-  * @author Profesores PPROG
+  * @author Fernando
   *
   * @param character Un puntero al personaje
   * @param gdesc Una cadena con la nueva descripción gráfica
@@ -83,7 +86,7 @@ Status character_set_gdesc(Character *character, char *gdesc);
 
 /**
   * @brief Obtiene la salud de un personaje
-  * @author Profesores PPROG
+  * @author Fernando
   *
   * @param character Un puntero al personaje
   * @return La salud del personaje
@@ -92,7 +95,7 @@ int character_get_health(Character *character);
 
 /**
   * @brief Establece la salud de un personaje
-  * @author Profesores PPROG
+  * @author Fernando
   *
   * @param character Un puntero al personaje
   * @param health La nueva salud
@@ -102,7 +105,7 @@ Status character_set_health(Character *character, int health);
 
 /**
   * @brief Obtiene el estado de amistad de un personaje
-  * @author Profesores PPROG
+  * @author Fernando
   *
   * @param character Un puntero al personaje
   * @return 1 si es amistoso, 0 si no lo es
@@ -111,7 +114,7 @@ int character_get_friendly(Character *character);
 
 /**
   * @brief Establece el estado de amistad de un personaje
-  * @author Profesores PPROG
+  * @author Fernando
   *
   * @param character Un puntero al personaje
   * @param friendly 1 si es amistoso, 0 si no lo es
@@ -121,7 +124,7 @@ Status character_set_friendly(Character *character, int friendly);
 
 /**
   * @brief Obtiene el mensaje de un personaje
-  * @author Profesores PPROG
+  * @author Fernando
   *
   * @param character Un puntero al personaje
   * @return El mensaje del personaje
@@ -130,7 +133,7 @@ Status character_set_friendly(Character *character, int friendly);
 
 /**
   * @brief Establece el mensaje de un personaje
-  * @author Profesores PPROG
+  * @author Fernando
   *
   * @param character Un puntero al personaje
   * @param message Una cadena con el nuevo mensaje
@@ -140,7 +143,7 @@ Status character_set_message(Character *character, char *message);
 
 /**
   * @brief Imprime la información de un personaje
-  * @author Profesores PPROG
+  * @author Fernando
   *
   * Esta función muestra el id, nombre, descripción gráfica, salud, estado de amistad y mensaje del personaje.
   * @param character Un puntero al personaje
@@ -148,7 +151,7 @@ Status character_set_message(Character *character, char *message);
 void character_print( Character *character);
 /**
   * @brief Devuelve el id del personaje que sigue
-  * @author 
+  * @author Fernando
   *
   * @param character Un puntero al personaje
   * @return El id de la entidad seguida o NO_ID si hay error
@@ -156,7 +159,7 @@ void character_print( Character *character);
 Id character_get_following(Character* character);
 /**
   * @brief Cambia el id de la entidad a la que sigue el personaje
-  * @author 
+  * @author Fernando
   *
   * @param character Un puntero al personaje
   * @param id Id de la entidad a la que seguirá

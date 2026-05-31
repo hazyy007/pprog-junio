@@ -2,7 +2,7 @@
  * @brief It tests space module
  * 
  * @file space_test.c
- * @author Profesores Pprog
+ * @author Iker
  * @version 0.0 
  * @date 17-02-2025
  * @copyright GNU Public License
@@ -16,10 +16,12 @@
 #include "test.h"
 #include "link.h"
 
-#define MAX_TESTS 33
+/** @brief Número total de pruebas unitarias del módulo Space. */
+#define MAX_TESTS 47
 
 /** 
  * @brief Main function for SPACE unit tests. 
+ * @author Iker
  * 
  * You may execute ALL or a SINGLE test
  *   1.- No parameter -> ALL test are executed 
@@ -78,6 +80,20 @@ int main(int argc, char** argv) {
   if (all || test == 31) test2_space_set_gdesc();
   if (all || test == 32) test1_space_get_gdesc();
   if (all || test == 33) test2_space_get_gdesc();
+  if (all || test == 34) test1_space_add_link();
+  if (all || test == 35) test2_space_add_link();
+  if (all || test == 36) test1_space_get_link();
+  if (all || test == 37) test2_space_get_link();
+  if (all || test == 38) test1_space_remove_character();
+  if (all || test == 39) test2_space_remove_character();
+  if (all || test == 40) test1_space_print();
+  if (all || test == 41) test2_space_print();
+  if (all || test == 42) test1_space_get_number_of_links();
+  if (all || test == 43) test2_space_get_number_of_links();
+  if (all || test == 44) test1_space_get_n_characters();
+  if (all || test == 45) test2_space_get_n_characters();
+  if (all || test == 46) test1_space_get_gdes_from_index();
+  if (all || test == 47) test2_space_get_gdes_from_index();
 
   PRINT_PASSED_PERCENTAGE;
 
@@ -322,7 +338,108 @@ void test2_space_get_gdesc() {
     PRINT_TEST_RESULT(space_get_gdesc(s) == NULL);
 }
 
+void test1_space_add_link() {
+    Space *s;
+    Link *l;
+    s = space_create(1);
+    l = link_create(10);
+    PRINT_TEST_RESULT(space_add_link(s, l) == OK);
+    link_destroy(l);
+    space_destroy(s);
+}
 
+void test2_space_add_link() {
+    Space *s;
+    s = space_create(1);
+    PRINT_TEST_RESULT(space_add_link(s, NULL) == ERROR);
+    space_destroy(s);
+}
 
+void test1_space_get_link() {
+    Space *s;
+    Link *l;
+    s = space_create(1);
+    l = link_create(10);
+    space_add_link(s, l);
+    PRINT_TEST_RESULT(space_get_link(s, 10) == l);
+    link_destroy(l);
+    space_destroy(s);
+}
+
+void test2_space_get_link() {
+    Space *s;
+    s = space_create(1);
+    PRINT_TEST_RESULT(space_get_link(s, 10) == NULL);
+    space_destroy(s);
+}
+
+void test1_space_remove_character() {
+    Space *s;
+    s = space_create(1);
+    space_set_character(s, 20);
+    PRINT_TEST_RESULT(space_remove_character(s, 20) == OK);
+    space_destroy(s);
+}
+
+void test2_space_remove_character() {
+    Space *s;
+    s = space_create(1);
+    PRINT_TEST_RESULT(space_remove_character(s, 20) == ERROR);
+    space_destroy(s);
+}
+
+void test1_space_print() {
+    Space *s;
+    s = space_create(1);
+    PRINT_TEST_RESULT(space_print(s) == OK);
+    space_destroy(s);
+}
+
+void test2_space_print() {
+    PRINT_TEST_RESULT(space_print(NULL) == ERROR);
+}
+
+void test1_space_get_number_of_links() {
+    Space *s;
+    Link *l;
+    s = space_create(1);
+    l = link_create(10);
+    space_add_link(s, l);
+    PRINT_TEST_RESULT(space_get_number_of_links(s) == 1);
+    link_destroy(l);
+    space_destroy(s);
+}
+
+void test2_space_get_number_of_links() {
+    PRINT_TEST_RESULT(space_get_number_of_links(NULL) == -1);
+}
+
+void test1_space_get_n_characters() {
+    Space *s;
+    s = space_create(1);
+    space_set_character(s, 20);
+    PRINT_TEST_RESULT(space_get_n_characters(s) == 1);
+    space_destroy(s);
+}
+
+void test2_space_get_n_characters() {
+    PRINT_TEST_RESULT(space_get_n_characters(NULL) == -1);
+}
+
+void test1_space_get_gdes_from_index() {
+    Space *s;
+    char gdesc[GDESC_ROWS][GDESC_COLS] = { "line1", "line2", "line3", "line4", "line5" };
+    s = space_create(1);
+    space_set_gdesc(s, gdesc);
+    PRINT_TEST_RESULT(strcmp(space_get_gdes_from_index(s, 0), "line1") == 0);
+    space_destroy(s);
+}
+
+void test2_space_get_gdes_from_index() {
+    Space *s;
+    s = space_create(1);
+    PRINT_TEST_RESULT(space_get_gdes_from_index(s, -1) == NULL);
+    space_destroy(s);
+}
 
 

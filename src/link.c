@@ -2,7 +2,7 @@
  * @brief Implementa el módulo de enlaces
  *
  * @file link.c
- * @author 
+ * @author Iker
  * @version 1.0
  * @date 13-04-2026
  * @copyright GNU Public License
@@ -13,8 +13,13 @@
 #include <stdlib.h>
 #include <string.h>
 
+/** @brief Número de elementos reservados al crear un enlace. */
 #define SINGLE_ELEM 1
 
+/**
+ * @brief Estructura privada que representa un enlace entre espacios.
+ * @author Iker
+ */
 struct _Link
 {
     Id id;                /*!<  Identificador del enlace */

@@ -1,0 +1,16 @@
+<map id="src/inventory.c" name="src/inventory.c">
+<area shape="rect" id="Node000001" title="Implementa el módulo de inventario." alt="" coords="159,5,275,31"/>
+<area shape="rect" id="Node000002" href="$inventory_8h.html" title="Inventario." alt="" coords="17,79,112,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="193,33,103,75,101,70,191,28"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="137,79,203,104"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="211,32,187,69,183,66,207,30"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="228,79,299,104"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="227,30,250,66,246,69,222,32"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="323,79,393,104"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="241,28,324,70,322,75,238,33"/>
+<area shape="rect" id="Node000003" href="$set_8h.html" title="Define la interfaz del módulo de conjuntos." alt="" coords="5,152,60,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="62,105,46,141,41,139,57,103"/>
+<area shape="rect" id="Node000004" href="$types_8h.html" title="It defines common types for the whole project." alt="" coords="29,225,100,251"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="69,104,75,152,72,212,67,211,70,152,64,105"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="40,177,56,212,52,214,36,179"/>
+</map>

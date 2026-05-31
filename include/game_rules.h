@@ -1,7 +1,7 @@
 /**
  * @brief Define la interfaz del módulo de reglas del juego
  * @file game_rules.h
- * @author Alejandro Dominguez
+ * @author Alexander Preciado
  * @version 1.0
  * @copyright GNU Public License
  */
@@ -13,18 +13,21 @@
  #include "types.h"
 
  /**
-  * @brief Estructura opca de las reglas del juego
+  * @brief Estructura opaca de las reglas del juego
+  * @author Alexander Preciado
   */
  typedef struct _GameRules GameRules;
 
  /**
  * @brief Crea e inicializa el módulo de reglas
+ * @author Alexander Preciado
  * @return Puntero a GameRules o NULL en caso de error
  */
 GameRules* game_rules_create();
 
 /**
  * @brief Libera la memoria del módulo de reglas
+ * @author Alexander Preciado
  * @param rules Puntero al módulo de reglas
  * @return OK o ERROR
  */
@@ -32,6 +35,7 @@ Status game_rules_destroy(GameRules* rules);
 
 /**
  * @brief Ejecuta las reglas aleatorias sobre el estado del juego
+ * @author Alexander Preciado
  * @param rules Puntero al módulo de reglas
  * @param game Puntero al juego actual
  * @return OK si se actualiza correctamente, ERROR en caso contrario

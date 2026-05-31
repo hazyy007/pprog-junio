@@ -2,7 +2,7 @@
  * @brief Implementa el módulo de espacios
  *
  * @file space.c
- * @author 
+ * @author Iker
  * @version 3.0
  * @date 16-03-2026
  * @copyright GNU Public License
@@ -14,14 +14,18 @@
 #include <stdlib.h>
 #include <string.h>
 
+/** @brief Número de elementos reservados al crear un espacio. */
 #define SINGLE_ELEM 1
+/** @brief Posición inicial de las cadenas internas. */
 #define FIRST_CHAR 0
+/** @brief Número máximo de espacios que puede manejar el módulo. */
 #define MAX_SPACES 100
+/** @brief Número máximo de enlaces asociados a un espacio. */
 #define MAX_LINKS 4
 
 /**
- * @brief Space
- * Estructura de datos que representa un espacio en el juego.
+ * @brief Estructura privada que representa un espacio del juego.
+ * @author Iker
  */
 struct Space
 {
@@ -29,6 +33,8 @@ struct Space
   char name[WORD_SIZE + SINGLE_ELEM]; /*!< nombre del espacio*/
   Set *objects;                       /*!< conjunto de los id de los objetos que contiene*/
   Set *characters;                   /*!< conjunto de los id de los caracteres*/
+  Link *links[MAX_LINKS];             /*!< enlaces asociados al espacio*/
+  int n_links;                        /*!< numero de enlaces asociados*/
   char gdesc[GDESC_ROWS][GDESC_COLS]; /*!< Lo que hay que pintar el espacio*/
   BOOL discovered;                    /*!< Si esta descubierto o no*/
 };
@@ -57,9 +63,15 @@ Space *space_create(Id id)
   newSpace->name[FIRST_CHAR] = '\0';
   newSpace->objects = set_create();
   newSpace->characters = set_create();
+  newSpace->n_links = 0;
   newSpace->discovered = FALSE;
 
   /* Limpiamos el dibujo del espacio dejándolo en blanco para empezar de cero */
+  for (i = 0; i < MAX_LINKS; i++)
+  {
+    newSpace->links[i] = NULL;
+  }
+
   for (i = 0; i < GDESC_ROWS; i++)
   {
     for (j = 0; j < GDESC_COLS - 1; j++)
@@ -127,6 +139,38 @@ const char *space_get_name(Space *space)
     return NULL;
   }
   return space->name;
+}
+
+Status space_add_link(Space *space, Link *link)
+{
+  if (!space || !link || space->n_links >= MAX_LINKS)
+  {
+    return ERROR;
+  }
+
+  space->links[space->n_links] = link;
+  space->n_links++;
+  return OK;
+}
+
+Link *space_get_link(Space *space, Id link_id)
+{
+  int i;
+
+  if (!space || link_id == NO_ID)
+  {
+    return NULL;
+  }
+
+  for (i = 0; i < space->n_links; i++)
+  {
+    if (space->links[i] && link_get_id(space->links[i]) == link_id)
+    {
+      return space->links[i];
+    }
+  }
+
+  return NULL;
 }
 
 Status space_add_object(Space *space, Id object_id)
@@ -309,11 +353,6 @@ Status space_print(Space *space)
         fprintf(stdout, "%d ", (int)objs[i]);
       }
       fprintf(stdout, ")\n");
-
-      if (objs)
-      {
-        free(objs);
-      }
     }
     else
     {
@@ -332,6 +371,17 @@ int space_get_n_characters(Space *space)
   }
   return set_get_numberid(space->characters);
 }
+
+int space_get_number_of_links(Space *space)
+{
+  if (!space)
+  {
+    return -1;
+  }
+
+  return space->n_links;
+}
+
 char *space_get_gdes_from_index(Space*s, int n){
 if(!s||n>=5||n<0){
   return NULL;

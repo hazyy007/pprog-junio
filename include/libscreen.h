@@ -11,7 +11,9 @@
 #ifndef LIBSCREEN_H
 #define LIBSCREEN_H
 
+/** @brief Tipo opaco que representa un área rectangular de pantalla. */
 typedef struct _Area Area;
+/** @brief Colores disponibles para pintar el marco de la pantalla. */
 typedef enum {BLUE, GREEN, BLACK, RED, YELLOW, PURPLE, CYAN, WHITE} Frame_color;
 
 

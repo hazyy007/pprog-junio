@@ -2,7 +2,7 @@
  * @brief Implementa el motor gráfico textual
  *
  * @file graphic_engine.c
- * @author 
+ * @author Iker
  * @version 2.0
  * @date 16-03-2026
  * @copyright GNU Public License
@@ -20,23 +20,63 @@
 #include "player.h"
 #include "object.h"
 
+/** @brief Anchura del panel del mapa. */
 #define WIDTH_MAP 67
+/** @brief Anchura del panel de descripción. */
 #define WIDTH_DES 55
+/** @brief Anchura del banner inferior. */
 #define WIDTH_BAN 25
+/** @brief Altura del panel del mapa. */
 #define HEIGHT_MAP 30
+/** @brief Altura del banner inferior. */
 #define HEIGHT_BAN 1
+/** @brief Altura del panel de ayuda. */
 #define HEIGHT_HLP 2
+/** @brief Altura del panel de feedback. */
 #define HEIGHT_FDB 3
+/** @brief Número máximo de objetos que se muestran en el panel. */
 #define MAX_OBJECTS 100
+/** @brief Anchura de una habitación dentro del mapa ASCII. */
 #define ROOM_WIDTH 19
 
+/**
+ * @brief Estructura privada con las áreas de pantalla del motor gráfico.
+ * @author Iker
+ */
 struct _Graphic_engine
 {
-    Area *map, *descript, *banner, *help, *feedback;
+    Area *map;      /*!< Área del mapa. */
+    Area *descript; /*!< Área de descripción del estado del juego. */
+    Area *banner;   /*!< Área del banner de turno. */
+    Area *help;     /*!< Área de ayuda de comandos. */
+    Area *feedback; /*!< Área de resultado del último comando. */
 };
 
+/**
+ * @brief Pinta una fila de espacios en el mapa.
+ * @author Iker
+ * @param area Área de pantalla donde se pinta.
+ * @param game Puntero al juego.
+ * @param middle Espacio central de la fila.
+ * @param is_act Indica si el espacio central es el actual.
+ */
 void graphic_engine_paint_spaces_row(Area *area, Game *game, Space *middle, BOOL is_act);
+/**
+ * @brief Construye la cadena de objetos visibles de un espacio.
+ * @author Iker
+ * @param game Puntero al juego.
+ * @param space Espacio del que se leen los objetos.
+ * @param str Cadena de salida con ancho fijo.
+ * @return OK si se genera correctamente, ERROR en caso contrario.
+ */
 Status graphic_engine_get_objects_str(Game *game, Space *space, char *str);
+/**
+ * @brief Construye la marca de salidas verticales de un espacio.
+ * @author Iker
+ * @param game Puntero al juego.
+ * @param space Espacio consultado.
+ * @param str Cadena de salida con las marcas U/D.
+ */
 void graphic_engine_get_vertical_exits_str(Game *game, Space *space, char *str);
 
 Graphic_engine *graphic_engine_create()

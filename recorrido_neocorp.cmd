@@ -21,7 +21,7 @@ move south
 move east
 open PuertaServidores with TarjetaNivel2
 move north
-chat IA_Aliada
+chat GuiaDigital
 move west
 take Password
 move east
@@ -35,7 +35,7 @@ take TarjetaVIP
 move west
 open PuertaNucleo with TarjetaVIP
 move north
-attack NeoCEO_IA
+attack NeoCEO
 take PaseAzotea
 take ModuloDatos
 open EscotillaAzotea with PaseAzotea

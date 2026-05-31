@@ -2,7 +2,7 @@
  * @brief Implementa el módulo del personaje
  *
  * @file character.c
- * @author 
+ * @author Fernando
  * @version 2.0
  * @date 23-02-2026
  * @copyright GNU Public License
@@ -13,6 +13,10 @@
 #include <string.h>
 #include "character.h"
 
+/**
+ * @brief Estructura privada que almacena el estado de un personaje.
+ * @author Fernando
+ */
 struct _Character
 {
     Id id;                             /*!< Id del personaje */

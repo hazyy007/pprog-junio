@@ -2,7 +2,7 @@
  * @brief It tests character module
  *
  * @file character_test.c
- * @author RAHER
+ * @author Fernando
  * @version 0.0
  * @date 17-03-2025
  * @copyright GNU Public License
@@ -15,10 +15,12 @@
 #include "character_test.h"
 #include "test.h"
 
-#define MAX_TESTS 30
+/** @brief Número total de pruebas unitarias del módulo Character. */
+#define MAX_TESTS 32
 
 /**
  * @brief Main function for CHARACTER unit tests.
+ * @author Fernando
  *
  * You may execute ALL or a SINGLE test
  *   1.- No parameter -> ALL test are executed
@@ -74,6 +76,8 @@ int main(int argc, char** argv) {
   if (all || test == 28) test2_character_get_following();
   if (all || test == 29) test1_character_set_following();
   if (all || test == 30) test2_character_set_following();
+  if (all || test == 31) test1_character_print();
+  if (all || test == 32) test2_character_print();
 
 
   PRINT_PASSED_PERCENTAGE;
@@ -265,4 +269,17 @@ void test1_character_set_following() {
 void test2_character_set_following() {
   Character *c = NULL;
   PRINT_TEST_RESULT(character_set_following(c, 7) == ERROR);
+}
+
+void test1_character_print() {
+  Character *c;
+  c = character_create(1);
+  character_print(c);
+  PRINT_TEST_RESULT(TRUE);
+  character_destroy(c);
+}
+
+void test2_character_print() {
+  character_print(NULL);
+  PRINT_TEST_RESULT(TRUE);
 }

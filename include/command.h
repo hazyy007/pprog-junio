@@ -2,7 +2,7 @@
  * @brief Define la interfaz del intérprete de comandos
  *
  * @file command.h
- * @author 
+ * @author Fernando
  * @version 1.0
  * @date 15-2-26
  * @copyright GNU Public License
@@ -13,7 +13,9 @@
 
 #include "types.h"
 
+/** @brief Número de representaciones textuales por comando. */
 #define N_CMDT 2
+/** @brief Número total de códigos de comando reconocidos. */
 #define N_CMD 16
 
 /**
@@ -33,13 +35,13 @@ typedef struct _Command Command;
 
 /**
  * @brief Crea un nuevo comando.
- * @author Unai
+ * @author Fernando
  * @return Puntero al comando creado o NULL en caso de error.
  */
 Command* command_create();
 /**
  * @brief Libera la memoria de un comando.
- * @author Unai
+ * @author Fernando
  * @param command Puntero al comando a destruir.
  * @return OK si se destruye con éxito, ERROR en caso contrario.
  */
@@ -47,7 +49,7 @@ Status command_destroy(Command* command);
 
 /**
  * @brief Asigna un código a un comando.
- * @author Unai
+ * @author Fernando
  * @param command Puntero al comando.
  * @param code Código a asignar.
  * @return OK si se asigna con éxito, ERROR en caso contrario.
@@ -56,7 +58,7 @@ Status command_set_code(Command* command, CommandCode code);
 
 /**
  * @brief Obtiene el código actual de un comando.
- * @author Unai
+ * @author Fernando
  * @param command Puntero al comando.
  * @return El código del comando o NO_CMD si hay error.
  */
@@ -64,7 +66,7 @@ CommandCode command_get_code(Command* command);
 
 /**
  * @brief Obtiene el argumento del comando.
- * @author Unai
+ * @author Fernando
  * @param command Puntero al comando.
  * @return El argumento del comando o NULL si hay error.
  */
@@ -72,7 +74,7 @@ char** command_get_arg(Command* command);
 
 /**
  * @brief Obtiene el comando introducido por el usuario desde teclado.
- * @author Unai
+ * @author Fernando
  * @param command Puntero al comando.
  * @return El comando introducido o NULL si hay error.
  */
@@ -80,7 +82,7 @@ char* command_get_last_input(Command* command);
 
 /**
  * @brief Lee el comando introducido por el usuario desde teclado.
- * @author Unai
+ * @author Fernando
  * @param command Puntero al comando donde se guardará la entrada.
  * @return OK si se lee con éxito, ERROR en caso contrario.
  */
@@ -88,7 +90,7 @@ Status command_get_user_input(Command* command);
 
 /**
  * @brief Obtiene el número de argumentos del comando.
- * @author Unai.G
+ * @author Fernando
  * @param command Puntero al comando.
  * @return El número de argumentos o -1 si hay error.
  */

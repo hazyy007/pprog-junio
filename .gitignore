@@ -1,4 +1,12 @@
 *.o
 castle
-doc/
+neocorp
 obj/
+recorrido_neocorp_actual.log
+/character_test
+/inventory_test
+/link_test
+/object_test
+/player_test
+/set_test
+/space_test

@@ -2,7 +2,7 @@
  * @brief Implementa las acciones del juego
  *
  * @file game_actions.c
- * @author 
+ * @author Fernando, Alejandro Domínguez, Iker
  * @version 1.0
  * @date 15-03-2026
  * @copyright GNU Public License
@@ -18,20 +18,110 @@
 #include <strings.h>
 #include <time.h>
 
+/**
+ * @brief Gestiona un comando no reconocido.
+ * @author Fernando
+ * @param game Puntero al juego.
+ * @return ERROR siempre, al no ser un comando válido.
+ */
 Status game_actions_unknown(Game *game);
+/**
+ * @brief Gestiona la salida del juego.
+ * @author Fernando
+ * @param game Puntero al juego.
+ * @return OK.
+ */
 Status game_actions_exit(Game *game);
+/**
+ * @brief Mueve al jugador activo, seguidores y colaborador.
+ * @author Fernando
+ * @param game Puntero al juego.
+ * @return OK si el movimiento es válido, ERROR en caso contrario.
+ */
 Status game_actions_move(Game *game);
+/**
+ * @brief Recoge un objeto movible del espacio actual.
+ * @author Alejandro Domínguez
+ * @param game Puntero al juego.
+ * @return OK si el objeto pasa al inventario, ERROR en caso contrario.
+ */
 Status game_actions_take(Game *game);
+/**
+ * @brief Suelta un objeto y los objetos que dependan de él.
+ * @author Alejandro Domínguez
+ * @param game Puntero al juego.
+ * @return OK si el objeto se suelta, ERROR en caso contrario.
+ */
 Status game_actions_drop(Game *game);
+/**
+ * @brief Resuelve un ataque contra un enemigo.
+ * @author Fernando
+ * @param game Puntero al juego.
+ * @return OK si se ejecuta el ataque, ERROR en caso contrario.
+ */
 Status game_actions_attack(Game *game);
+/**
+ * @brief Ejecuta una conversación con un personaje amistoso.
+ * @author Fernando
+ * @param game Puntero al juego.
+ * @return OK si existe conversación válida, ERROR en caso contrario.
+ */
 Status game_actions_chat(Game *game);
+/**
+ * @brief Inspecciona un objeto del inventario o del espacio actual.
+ * @author Alejandro Domínguez
+ * @param game Puntero al juego.
+ * @return OK si se encuentra el objeto, ERROR en caso contrario.
+ */
 Status game_actions_inspect(Game *game);
+/**
+ * @brief Recluta un personaje amistoso para que siga al jugador.
+ * @author Fernando
+ * @param game Puntero al juego.
+ * @return OK si se recluta el personaje, ERROR en caso contrario.
+ */
 Status game_actions_recruit(Game *game);
+/**
+ * @brief Hace que un seguidor deje de seguir al jugador.
+ * @author Fernando
+ * @param game Puntero al juego.
+ * @return OK si se abandona el seguimiento, ERROR en caso contrario.
+ */
 Status game_actions_abandon(Game *game);
+/**
+ * @brief Usa un objeto sobre el jugador o sobre un seguidor.
+ * @author Iker
+ * @param game Puntero al juego.
+ * @return OK si el objeto se usa, ERROR en caso contrario.
+ */
 Status game_actions_use(Game *game);
+/**
+ * @brief Abre un enlace usando un objeto válido.
+ * @author Iker
+ * @param game Puntero al juego.
+ * @return OK si el enlace se abre, ERROR en caso contrario.
+ */
 Status game_actions_open(Game *game);
+/**
+ * @brief Guarda el estado actual del juego en un fichero.
+ * @author Iker
+ * @param game Puntero al juego.
+ * @return OK si se guarda, ERROR en caso contrario.
+ */
 Status game_actions_save(Game *game);
+/**
+ * @brief Carga el estado del juego desde un fichero.
+ * @author Iker
+ * @param game Puntero al juego.
+ * @return OK si se carga, ERROR en caso contrario.
+ */
 Status game_actions_load(Game *game);
+/**
+ * @brief Forma equipo con otro jugador.
+ * @author Fernando
+ * @param game Puntero al juego.
+ * @return OK si se crea la colaboración, ERROR en caso contrario.
+ */
 Status game_actions_colab(Game *game);
 
 Status game_actions_update(Game *game, Command *command)
@@ -282,7 +372,8 @@ Status game_actions_drop(Game *game)
   Object *obj;
   char **arg = NULL;
   int i, max_objects;
-  Id id_2;
+  Id dep_id;
+  Object *dep_obj = NULL;
 
   /* Comprueba la validez del puntero */
   if (!game)
@@ -325,10 +416,18 @@ Status game_actions_drop(Game *game)
           /* Eliminacion y reubicacion del objeto */
           player_del_object(game_get_player(game), obj_id);
           game_set_object_location(game, player_loc, obj_id);
-          if ((id_2 = object_get_dependency(obj)) != NO_ID)
+
+          for (i = 0; i < max_objects; i++)
           {
-            player_del_object(game_get_player(game), id_2);
-            game_set_object_location(game, player_loc, id_2);
+            dep_id = player_get_object(game_get_player(game), i);
+            dep_obj = game_get_object(game, dep_id);
+
+            if (dep_obj && object_get_dependency(dep_obj) == obj_id)
+            {
+              player_del_object(game_get_player(game), dep_id);
+              game_set_object_location(game, player_loc, dep_id);
+              i = -1;
+            }
           }
           return OK;
         }
@@ -780,6 +879,7 @@ Status game_actions_use(Game *game)
   Object *object = NULL;
   Character *follower = NULL;
   int objhealth, i = 0;
+  BOOL used = FALSE;
   char **arg = NULL;
 
   if (!game)
@@ -826,23 +926,40 @@ Status game_actions_use(Game *game)
     {
       return ERROR;
     }
+    used = TRUE;
   }
   else
   {
-    if (!(followers_ids = game_get_players_followers(game)))
-      for (i = 0; i < game_get_number_of_followers_of_player(game); i++)
-      {
-        follower = game_get_character(game, followers_ids[i]);
-        if (!follower || character_get_following(follower) != player_get_id(player) || strcasecmp(character_get_name(follower), arg[2]) != 0)
-        {
-          continue;
-        }
+    if (arg[2][0] == '\0')
+    {
+      return ERROR;
+    }
 
-        if (!character_set_health(follower, character_get_health(follower) + objhealth))
-        {
-          return ERROR;
-        }
+    if (!(followers_ids = game_get_players_followers(game)))
+    {
+      return ERROR;
+    }
+
+    for (i = 0; i < game_get_number_of_followers_of_player(game); i++)
+    {
+      follower = game_get_character(game, followers_ids[i]);
+      if (!follower || character_get_following(follower) != player_get_id(player) || strcasecmp(character_get_name(follower), arg[2]) != 0)
+      {
+        continue;
       }
+
+      if (!character_set_health(follower, character_get_health(follower) + objhealth))
+      {
+        return ERROR;
+      }
+      used = TRUE;
+      break;
+    }
+
+    if (used == FALSE)
+    {
+      return ERROR;
+    }
   }
 
   return inventory_del_object(backpack, object_in_backpack);

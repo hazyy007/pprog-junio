@@ -2,7 +2,7 @@
  * @brief Define la interfaz de lectura de datos del juego
  *
  * @file game_reader.h
- * @author 
+ * @author Iker
  * @version 1.0
  * @date 15-03-2026
  * @copyright GNU Public License
@@ -15,7 +15,7 @@
 
 /**
  * @brief Carga los espacios del mapa desde un archivo de texto.
- * @author 
+ * @author Iker
  * @param game Puntero al juego principal donde se añadirán los espacios.
  * @param filename Cadena de caracteres con el nombre del archivo.
  * @return OK si se lee correctamente, ERROR si hay algún fallo.
@@ -24,7 +24,7 @@ Status game_reader_load_spaces(Game *game, char *filename);
 
 /**
  * @brief Carga los objetos desde un archivo de texto.
- * @author 
+ * @author Iker
  * @param game Puntero al juego principal donde se añadirán los objetos.
  * @param filename Cadena de caracteres con el nombre del archivo.
  * @return OK si se lee correctamente, ERROR si hay algún fallo.
@@ -33,7 +33,7 @@ Status game_reader_load_objects(Game *game, char *filename);
 
 /**
  * @brief Carga los personajes desde un archivo de texto.
- * @author 
+ * @author Iker
  * @param game Puntero al juego principal donde se añadirán los personajes.
  * @param filename Cadena de caracteres con el nombre del archivo.
  * @return OK si se lee correctamente, ERROR si hay algún fallo.
@@ -42,7 +42,7 @@ Status game_reader_load_characters(Game *game, char *filename);
 
 /**
  * @brief Carga los jugadores desde un archivo de texto.
- * @author 
+ * @author Iker
  * @param game Puntero al juego principal donde se añadirá el jugador.
  * @param filename Cadena de caracteres con el nombre del archivo.
  * @return OK si se lee correctamente, ERROR si hay algún fallo.
@@ -51,7 +51,7 @@ Status game_reader_load_players(Game *game, char *filename);
 
 /**
  * @brief Carga los enlaces desde un archivo de texto.
- * @author 
+ * @author Iker
  * @param game Puntero al juego principal donde se añadirán los enlaces.
  * @param filename Cadena de caracteres con el nombre del archivo.
  * @return OK si se lee correctamente, ERROR si hay algún fallo.

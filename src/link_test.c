@@ -1,10 +1,27 @@
+/**
+ * @brief Implementa las pruebas unitarias del módulo Link.
+ * @file link_test.c
+ * @author Iker
+ * @version 1.0
+ * @copyright GNU Public License
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "link.h"
 #include "link_test.h"
 #include "test.h"
-#define MAX_TESTS 28
+/** @brief Número total de pruebas unitarias del módulo Link. */
+#define MAX_TESTS 30
+
+/**
+ * @brief Función principal de pruebas para el módulo Link.
+ * @author Iker
+ * @param argc Número de argumentos recibidos.
+ * @param argv Argumentos de ejecución; puede incluir el número de prueba.
+ * @return 0 si la ejecución de pruebas termina correctamente.
+ */
 int main(int argc, char** argv) {
     int test = 0;
     if (argc > 1) test = atoi(argv[1]);
@@ -41,6 +58,8 @@ int main(int argc, char** argv) {
     if (test == 0 || test == 26) test2_link_get_direction();
     if (test == 0 || test == 27) test1_link_get_open();
     if (test == 0 || test == 28) test2_link_get_open();
+    if (test == 0 || test == 29) test1_link_print();
+    if (test == 0 || test == 30) test2_link_print();
 
 
     PRINT_PASSED_PERCENTAGE;
@@ -198,4 +217,14 @@ void test1_link_get_open() {
 
 void test2_link_get_open() {
     PRINT_TEST_RESULT(link_get_open(NULL) == FALSE);
+}
+
+void test1_link_print() {
+    Link *l = link_create(1);
+    PRINT_TEST_RESULT(link_print(l) == OK);
+    link_destroy(l);
+}
+
+void test2_link_print() {
+    PRINT_TEST_RESULT(link_print(NULL) == ERROR);
 }

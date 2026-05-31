@@ -1,0 +1,21 @@
+<map id="_Game" name="_Game">
+<area shape="rect" id="Node000001" title="Estructura privada que contiene todo el estado del juego." alt="" coords="271,273,339,299"/>
+<area shape="rect" id="Node000002" href="$structPlayer.html" title="Player Estructura de Jugador que contiene el ID, nombre, ubicación actual e ID del objeto que transpo..." alt="" coords="45,185,107,211"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,219,111,234,129,247,165,262,203,272,271,281,271,286,202,277,164,267,127,252,108,238,92,223"/>
+<area shape="rect" id="Node000003" href="$struct__Inventory.html" title="Estructura privada que almacena los objetos de una mochila." alt="" coords="5,95,96,121"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="56,133,61,161,72,184,67,186,56,162,50,135"/>
+<area shape="rect" id="Node000004" href="$structSet.html" title="Estructura privada que representa un conjunto de identificadores." alt="" coords="76,5,119,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="87,44,59,96,55,94,82,42"/>
+<area shape="rect" id="Node000007" href="$structSpace.html" title="Estructura privada que representa un espacio del juego." alt="" coords="153,185,215,211"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="112,42,118,53,181,184,176,186,114,56,108,44"/>
+<area shape="rect" id="Node000005" href="$structObject.html" title="Estructura privada que representa un objeto." alt="" coords="316,185,380,211"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="339,224,314,274,309,272,334,222"/>
+<area shape="rect" id="Node000006" href="$struct__Character.html" title="Estructura privada que almacena el estado de un personaje." alt="" coords="405,185,497,211"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="428,222,387,252,337,276,335,271,384,247,425,218"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="187,224,190,237,197,248,213,261,232,270,272,280,270,285,230,275,210,265,193,251,185,239,182,225"/>
+<area shape="rect" id="Node000008" href="$struct__Link.html" title="Estructura privada que representa un enlace entre espacios." alt="" coords="241,95,297,121"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="271,134,272,171,277,210,289,244,301,272,297,274,284,246,272,211,267,171,266,135"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="234,129,210,148,198,167,190,186,185,184,193,165,206,145,230,125"/>
+<area shape="rect" id="Node000009" href="$struct__Command.html" title="Estructura privada que almacena el comando leído." alt="" coords="521,185,617,211"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="543,221,516,237,485,252,408,273,340,284,339,279,407,268,483,247,513,233,541,216"/>
+</map>

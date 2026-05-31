@@ -2,7 +2,7 @@
  * @brief Define la interfaz de actualización del juego (acciones)
  *
  * @file game_actions.h
- * @author
+ * @author Fernando
  * @version 1.0
  * @date 15-03-2026
  * @copyright GNU Public License
@@ -17,6 +17,7 @@
 
 /**
  * @brief Actualiza el estado del juego según el comando introducido.
+ * @author Fernando
  * @param game Puntero al juego principal.
  * @param cmd Puntero al comando a ejecutar.
  * @return OK si se actualiza con éxito, ERROR en caso contrario.

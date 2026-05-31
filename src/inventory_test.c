@@ -1,9 +1,26 @@
+/**
+ * @brief Implementa las pruebas unitarias del módulo Inventory.
+ * @file inventory_test.c
+ * @author Alejandro Domínguez
+ * @version 1.0
+ * @copyright GNU Public License
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "inventory.h"
 #include "inventory_test.h"
 #include "test.h"
-#define MAX_TESTS 18
+/** @brief Número total de pruebas unitarias del módulo Inventory. */
+#define MAX_TESTS 20
+
+/**
+ * @brief Función principal de pruebas para el módulo Inventory.
+ * @author Alejandro Domínguez
+ * @param argc Número de argumentos recibidos.
+ * @param argv Argumentos de ejecución; puede incluir el número de prueba.
+ * @return 0 si la ejecución de pruebas termina correctamente.
+ */
 int main(int argc, char** argv) {
     int test = 0;
     if (argc > 1) test = atoi(argv[1]);
@@ -30,6 +47,8 @@ int main(int argc, char** argv) {
     if (test == 0 || test == 16) test2_inventory_del_object();
     if (test == 0 || test == 17) test1_inventory_is_full();
     if (test == 0 || test == 18) test2_inventory_is_full();
+    if (test == 0 || test == 19) test1_inventory_print();
+    if (test == 0 || test == 20) test2_inventory_print();
 
 
     PRINT_PASSED_PERCENTAGE;
@@ -139,4 +158,14 @@ void test2_inventory_is_full() {
     Inventory *i = inventory_create(1);
     PRINT_TEST_RESULT(inventory_is_full(i) == FALSE);
     inventory_destroy(i);
+}
+
+void test1_inventory_print() {
+    Inventory *i = inventory_create(1);
+    PRINT_TEST_RESULT(inventory_print(i) == OK);
+    inventory_destroy(i);
+}
+
+void test2_inventory_print() {
+    PRINT_TEST_RESULT(inventory_print(NULL) == ERROR);
 }
