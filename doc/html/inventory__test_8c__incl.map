@@ -1,0 +1,18 @@
+<map id="src/inventory_test.c" name="src/inventory_test.c">
+<area shape="rect" id="Node000001" title="Implementa las pruebas unitarias del módulo Inventory." alt="" coords="163,5,314,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,72,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="207,33,85,76,84,71,206,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="97,79,167,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="223,33,162,73,159,69,220,28"/>
+<area shape="rect" id="Node000004" href="$inventory_8h.html" title="Inventario." alt="" coords="191,79,286,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="241,31,241,65,236,65,236,31"/>
+<area shape="rect" id="Node000007" href="$inventory__test_8h.html" title="Declara las pruebas unitarias del módulo inventory." alt="" coords="311,79,439,104"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="262,28,342,70,339,75,259,33"/>
+<area shape="rect" id="Node000008" href="$test_8h.html" title="Define utilidades comunes para las pruebas unitarias." alt="" coords="463,79,521,104"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="280,28,450,76,449,81,279,33"/>
+<area shape="rect" id="Node000005" href="$set_8h.html" title="Define la interfaz del módulo de conjuntos." alt="" coords="178,152,233,177"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="236,105,219,141,214,139,231,103"/>
+<area shape="rect" id="Node000006" href="$types_8h.html" title="It defines common types for the whole project." alt="" coords="202,225,273,251"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="243,104,246,137,247,177,243,212,238,212,241,177,241,137,238,104"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="213,177,229,212,224,214,208,179"/>
+</map>

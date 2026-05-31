@@ -1,0 +1,11 @@
+<map id="include/player.h" name="include/player.h">
+<area shape="rect" id="Node000001" title="Define la interfaz del módulo de jugador." alt="" coords="5,5,131,31"/>
+<area shape="rect" id="Node000002" href="$types_8h.html" title="It defines common types for the whole project." alt="" coords="41,225,111,251"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="66,32,53,79,52,115,56,151,70,212,65,213,50,152,46,115,48,78,61,30"/>
+<area shape="rect" id="Node000003" href="$inventory_8h.html" title="Inventario." alt="" coords="63,79,158,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="77,30,99,66,95,68,73,32"/>
+<area shape="poly" id="edge5_Node000003_Node000002" title=" " alt="" coords="110,105,85,213,79,211,105,104"/>
+<area shape="rect" id="Node000004" href="$set_8h.html" title="Define la interfaz del módulo de conjuntos." alt="" coords="114,152,169,177"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="118,103,133,139,129,141,113,105"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="133,179,98,217,94,213,129,176"/>
+</map>

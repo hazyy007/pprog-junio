@@ -2,7 +2,7 @@
  * @brief Implementa el módulo de inventario
  *
  * @file inventory.c
- * @author 
+ * @author Alejandro Domínguez
  * @version 1.0
  * @date 23-03-2026
  * @copyright GNU Public License
@@ -13,6 +13,10 @@
 #include <stdlib.h>
 #include <string.h>
 
+/**
+ * @brief Estructura privada que almacena los objetos de una mochila.
+ * @author Alejandro Domínguez
+ */
 struct _Inventory
 {
   Set *objs;     /*!< Conjunto de objetos almacenados */

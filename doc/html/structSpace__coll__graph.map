@@ -1,0 +1,7 @@
+<map id="Space" name="Space">
+<area shape="rect" id="Node000001" title="Estructura privada que representa un espacio del juego." alt="" coords="48,108,109,133"/>
+<area shape="rect" id="Node000002" href="$structSet.html" title="Estructura privada que representa un conjunto de identificadores." alt="" coords="5,5,48,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="25,44,25,64,30,83,41,96,54,106,51,110,37,100,26,85,20,65,19,44"/>
+<area shape="rect" id="Node000003" href="$struct__Link.html" title="Estructura privada que representa un enlace entre espacios." alt="" coords="103,5,159,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="123,45,104,85,89,109,84,106,99,83,118,42"/>
+</map>

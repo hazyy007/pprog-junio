@@ -1,7 +1,7 @@
 /**
  * @brief Archivo de prueba para el módulo object
  * @file object_test.c
- * @author 
+ * @author Alejandro Domínguez
  * @version 1.0
  * @date 15-03-2025
  */
@@ -13,10 +13,12 @@
 #include "object_test.h"
 #include "test.h"
 
-#define MAX_TESTS 16
+/** @brief Número total de pruebas unitarias del módulo Object. */
+#define MAX_TESTS 32
 
 /**
- * @brief Función principal de pruebas para el módulo Space.
+ * @brief Función principal de pruebas para el módulo Object.
+ * @author Alejandro Domínguez
  *
  * Dos modos de ejecución:
  *   1.-Si se ejecuta sin argumentos se ejecutan todas las pruebas
@@ -56,6 +58,22 @@ int main(int argc, char** argv) {
     if (all || test == 14) test2_object_set_desc();
     if (all || test == 15) test1_object_get_desc();
     if (all || test == 16) test2_object_get_desc();
+    if (all || test == 17) test1_object_set_health();
+    if (all || test == 18) test2_object_set_health();
+    if (all || test == 19) test1_object_get_health();
+    if (all || test == 20) test2_object_get_health();
+    if (all || test == 21) test1_object_set_movable();
+    if (all || test == 22) test2_object_set_movable();
+    if (all || test == 23) test1_object_get_movable();
+    if (all || test == 24) test2_object_get_movable();
+    if (all || test == 25) test1_object_set_dependency();
+    if (all || test == 26) test2_object_set_dependency();
+    if (all || test == 27) test1_object_get_dependency();
+    if (all || test == 28) test2_object_get_dependency();
+    if (all || test == 29) test1_object_set_open();
+    if (all || test == 30) test2_object_set_open();
+    if (all || test == 31) test1_object_get_open();
+    if (all || test == 32) test2_object_get_open();
 
 
     PRINT_PASSED_PERCENTAGE;
@@ -152,4 +170,96 @@ void test1_object_get_desc() {
 
 void test2_object_get_desc() {
     PRINT_TEST_RESULT(object_get_desc(NULL) == NULL);
+}
+
+void test1_object_set_health() {
+    Object *o;
+    o = object_create(1);
+    PRINT_TEST_RESULT(object_set_health(o, -3) == OK);
+    object_destroy(o);
+}
+
+void test2_object_set_health() {
+    PRINT_TEST_RESULT(object_set_health(NULL, 3) == ERROR);
+}
+
+void test1_object_get_health() {
+    Object *o;
+    o = object_create(1);
+    object_set_health(o, 5);
+    PRINT_TEST_RESULT(object_get_health(o) == 5);
+    object_destroy(o);
+}
+
+void test2_object_get_health() {
+    PRINT_TEST_RESULT(object_get_health(NULL) == -1);
+}
+
+void test1_object_set_movable() {
+    Object *o;
+    o = object_create(1);
+    PRINT_TEST_RESULT(object_set_movable(o, TRUE) == OK);
+    object_destroy(o);
+}
+
+void test2_object_set_movable() {
+    PRINT_TEST_RESULT(object_set_movable(NULL, TRUE) == ERROR);
+}
+
+void test1_object_get_movable() {
+    Object *o;
+    o = object_create(1);
+    object_set_movable(o, TRUE);
+    PRINT_TEST_RESULT(object_get_movable(o) == TRUE);
+    object_destroy(o);
+}
+
+void test2_object_get_movable() {
+    PRINT_TEST_RESULT(object_get_movable(NULL) == FALSE);
+}
+
+void test1_object_set_dependency() {
+    Object *o;
+    o = object_create(1);
+    PRINT_TEST_RESULT(object_set_dependency(o, 10) == OK);
+    object_destroy(o);
+}
+
+void test2_object_set_dependency() {
+    PRINT_TEST_RESULT(object_set_dependency(NULL, 10) == ERROR);
+}
+
+void test1_object_get_dependency() {
+    Object *o;
+    o = object_create(1);
+    object_set_dependency(o, 10);
+    PRINT_TEST_RESULT(object_get_dependency(o) == 10);
+    object_destroy(o);
+}
+
+void test2_object_get_dependency() {
+    PRINT_TEST_RESULT(object_get_dependency(NULL) == NO_ID);
+}
+
+void test1_object_set_open() {
+    Object *o;
+    o = object_create(1);
+    PRINT_TEST_RESULT(object_set_open(o, 20) == OK);
+    object_destroy(o);
+}
+
+void test2_object_set_open() {
+    PRINT_TEST_RESULT(object_set_open(NULL, 20) == ERROR);
+}
+
+void test1_object_get_open() {
+    Object *o;
+    o = object_create(1);
+    object_set_open(o, 20);
+    PRINT_TEST_RESULT(object_get_open(o) == 20);
+    object_destroy(o);
+}
+
+void test2_object_get_open() {
+    PRINT_TEST_RESULT(object_get_open(NULL) == NO_ID);
 }

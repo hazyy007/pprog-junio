@@ -2,7 +2,7 @@
  * @brief It implements the object module
  *
  * @file object.c
- * @author 
+ * @author Alejandro Domínguez
  * @version 1.0
  * @date 15-02-2026
  */
@@ -11,12 +11,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+/** @brief Número de elementos reservados al crear un objeto. */
 #define SINGLE_ELEM 1
+/** @brief Posición inicial de las cadenas internas. */
 #define FIRST_CHAR 0
 
 /**
- * @brief Object
- * Estructura de datos que representa un objeto.
+ * @brief Estructura privada que representa un objeto.
+ * @author Alejandro Domínguez
  */
 struct Object
 {
@@ -221,5 +223,4 @@ Id object_get_open(Object *obj)
   }
   return obj->open;
 }
-
 

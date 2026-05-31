@@ -1,10 +1,27 @@
+/**
+ * @brief Implementa las pruebas unitarias del módulo Player.
+ * @file player_test.c
+ * @author Fernando
+ * @version 1.0
+ * @copyright GNU Public License
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "player.h"
 #include "player_test.h"
 #include "test.h"
-#define MAX_TESTS 28
+/** @brief Número total de pruebas unitarias del módulo Player. */
+#define MAX_TESTS 40
+
+/**
+ * @brief Función principal de pruebas para el módulo Player.
+ * @author Fernando
+ * @param argc Número de argumentos recibidos.
+ * @param argv Argumentos de ejecución; puede incluir el número de prueba.
+ * @return 0 si la ejecución de pruebas termina correctamente.
+ */
 int main(int argc, char** argv) {
     int test = 0;
     if (argc > 1) test = atoi(argv[1]);
@@ -41,6 +58,18 @@ int main(int argc, char** argv) {
     if (test == 0 || test == 26) test2_player_set_gdesc();
     if (test == 0 || test == 27) test1_player_destroy();
     if (test == 0 || test == 28) test2_player_destroy();
+    if (test == 0 || test == 29) test1_player_get_id();
+    if (test == 0 || test == 30) test2_player_get_id();
+    if (test == 0 || test == 31) test1_player_get_object();
+    if (test == 0 || test == 32) test2_player_get_object();
+    if (test == 0 || test == 33) test1_player_print();
+    if (test == 0 || test == 34) test2_player_print();
+    if (test == 0 || test == 35) test1_player_get_number_of_backpack();
+    if (test == 0 || test == 36) test2_player_get_number_of_backpack();
+    if (test == 0 || test == 37) test1_player_set_collaborator();
+    if (test == 0 || test == 38) test2_player_set_collaborator();
+    if (test == 0 || test == 39) test1_player_get_collaborator();
+    if (test == 0 || test == 40) test2_player_get_collaborator();
 
     PRINT_PASSED_PERCENTAGE;
     return 0;
@@ -201,4 +230,70 @@ void test1_player_destroy() {
 
 void test2_player_destroy() {
     PRINT_TEST_RESULT(player_destroy(NULL) == ERROR);
+}
+
+void test1_player_get_id() {
+    Player *p = player_create(1);
+    PRINT_TEST_RESULT(player_get_id(p) == 1);
+    player_destroy(p);
+}
+
+void test2_player_get_id() {
+    PRINT_TEST_RESULT(player_get_id(NULL) == NO_ID);
+}
+
+void test1_player_get_object() {
+    Player *p = player_create(1);
+    player_add_object(p, 20);
+    PRINT_TEST_RESULT(player_get_object(p, 0) == 20);
+    player_destroy(p);
+}
+
+void test2_player_get_object() {
+    Player *p = player_create(1);
+    PRINT_TEST_RESULT(player_get_object(p, -1) == NO_ID);
+    player_destroy(p);
+}
+
+void test1_player_print() {
+    Player *p = player_create(1);
+    PRINT_TEST_RESULT(player_print(p) == OK);
+    player_destroy(p);
+}
+
+void test2_player_print() {
+    PRINT_TEST_RESULT(player_print(NULL) == ERROR);
+}
+
+void test1_player_get_number_of_backpack() {
+    Player *p = player_create(1);
+    PRINT_TEST_RESULT(player_get_number_of_backpack(p) == INVENTORY_SIZE);
+    player_destroy(p);
+}
+
+void test2_player_get_number_of_backpack() {
+    PRINT_TEST_RESULT(player_get_number_of_backpack(NULL) == -1);
+}
+
+void test1_player_set_collaborator() {
+    Player *p = player_create(1);
+    PRINT_TEST_RESULT(player_set_collaborator(p, 2) == OK);
+    player_destroy(p);
+}
+
+void test2_player_set_collaborator() {
+    Player *p = player_create(1);
+    PRINT_TEST_RESULT(player_set_collaborator(p, NO_ID) == ERROR);
+    player_destroy(p);
+}
+
+void test1_player_get_collaborator() {
+    Player *p = player_create(1);
+    player_set_collaborator(p, 2);
+    PRINT_TEST_RESULT(player_get_collaborator(p) == 2);
+    player_destroy(p);
+}
+
+void test2_player_get_collaborator() {
+    PRINT_TEST_RESULT(player_get_collaborator(NULL) == NO_ID);
 }

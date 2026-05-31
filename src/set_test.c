@@ -2,7 +2,7 @@
  * @brief It tests set module
  *
  * @file set_test.c
- * @author 
+ * @author Alejandro Domínguez
  * @version 0.0
  * @date 17-03-2025
  * @copyright GNU Public License
@@ -15,10 +15,12 @@
 #include "set_test.h"
 #include "test.h"
 
-#define MAX_TESTS 16
+/** @brief Número total de pruebas unitarias del módulo Set. */
+#define MAX_TESTS 18
 
 /**
  * @brief Main function for SET unit tests.
+ * @author Alejandro Domínguez
  *
  * You may execute ALL or a SINGLE test
  *   1.- No parameter -> ALL test are executed
@@ -60,6 +62,8 @@ int main(int argc, char** argv) {
   if (all || test == 14) test2_set_get_ids();
   if (all || test == 15) test1_set_destroy();
   if (all || test == 16) test2_set_destroy();
+  if (all || test == 17) test1_set_print();
+  if (all || test == 18) test2_set_print();
 
   PRINT_PASSED_PERCENTAGE;
 
@@ -176,4 +180,18 @@ void test1_set_destroy() {
 void test2_set_destroy() {
   Set *s = NULL;
   PRINT_TEST_RESULT(set_destroy(s) == ERROR);
+}
+
+void test1_set_print() {
+  Set *s;
+  s = set_create(1);
+  set_add(s, 10);
+  set_print(s);
+  PRINT_TEST_RESULT(TRUE);
+  set_destroy(s);
+}
+
+void test2_set_print() {
+  set_print(NULL);
+  PRINT_TEST_RESULT(TRUE);
 }

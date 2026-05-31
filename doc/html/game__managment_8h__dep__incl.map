@@ -1,0 +1,7 @@
+<map id="include/game_managment.h" name="include/game_managment.h">
+<area shape="rect" id="Node000001" title="Define las operaciones de carga y guardado de partidas." alt="" coords="20,5,228,31"/>
+<area shape="rect" id="Node000002" href="$game_8c.html" title="Implementa la lógica principal del juego." alt="" coords="5,79,99,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,43,66,80,62,77,100,39"/>
+<area shape="rect" id="Node000003" href="$game__actions_8c.html" title="Implementa las acciones del juego." alt="" coords="123,79,269,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="148,39,186,77,182,80,144,43"/>
+</map>

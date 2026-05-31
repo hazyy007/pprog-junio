@@ -50,10 +50,10 @@
 #c:2|Dron_Vigia|[!_!] |2|3|0|ALERTA. INTRUSO DETECTADO. ELIMINAR.|
 #c:3|Ingeniero|(-.-) |6|8|1|Soy el mecanico. Reclutame y te ayudare a salir de aqui.|
 #c:4|Ciborg_Sgt|[X_X] |7|10|0|SISTEMAS ARMADOS. PREPARATE PARA MORIR.|
-#c:5|IA_Aliada|<0_0> |8|10|1|Bienvenido. El codigo del laboratorio esta en el archivo oeste.|
+#c:5|GuiaDigital|<0_0> |8|10|1|Bienvenido. El codigo del laboratorio esta en el archivo oeste.|
 #c:6|Cientifico|(o_o) |10|6|1|Cuidado en la zona de pruebas, el perro robotico enloquecio.|
 #c:7|PerroRobot|/A_A\ |11|8|0|GRRRR... ZZZZT... ELIMINANDO AMENAZA...|
-#c:8|NeoCEO_IA|($ $) |14|15|0|No te llevaras mi Modulo de Datos, maldita rata de los bajos fondos.|
+#c:8|NeoCEO|($ $) |14|15|0|No te llevaras mi Modulo de Datos, maldita rata de los bajos fondos.|
 
 #o:1|Cable|1|Un trozo de cable de fibra optica pelado.|0|1|-1|-1|
 #o:2|Bebida|1|Refresco sintetico radiactivo. Cura un poco.|1|1|-1|-1|

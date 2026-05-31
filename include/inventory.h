@@ -2,7 +2,7 @@
  * @brief Inventario
  *
  * @file inventory.h
- * @author 
+ * @author Alejandro Domínguez
  * @version 1.0
  * @date 23-03-2026
  * @copyright GNU Public License
@@ -13,16 +13,18 @@
 
 #include "set.h"
 #include "types.h"
+/** @brief Capacidad máxima por defecto del inventario del jugador. */
 #define INVENTORY_SIZE 3
 
 /**
  * @brief Define el inventario.
+ * @author Alejandro Domínguez
  */
 typedef struct _Inventory Inventory;
 
 /**
  * @brief Crea un inventario.
- * @author 
+ * @author Alejandro Domínguez
  *
  * @param max_objs Máximo de objetos.
  * @return Puntero al nuevo inventario. NULL si hay error.
@@ -31,7 +33,7 @@ Inventory *inventory_create(int max_objs);
 
 /**
  * @brief Destruye un inventario.
- * @author 
+ * @author Alejandro Domínguez
  *
  * @param inventory Puntero al inventario a destruir.
  * @return OK si el inventario se destruye, ERROR si no.
@@ -40,7 +42,7 @@ Status inventory_destroy(Inventory *inventory);
 
 /**
  * @brief Obtiene el conjunto de objetos del inventario.
- * @author 
+ * @author Alejandro Domínguez
  *
  * @param inventory Puntero al inventario.
  * @return Un puntero al conjunto de objetos, NULL si hay algún error.
@@ -49,7 +51,7 @@ Set *inventory_get_objs(Inventory *inventory);
 
 /**
  * @brief Obtiene el máximo de objetos que el inventario puede albergar.
- * @author 
+ * @author Alejandro Domínguez
  *
  * @param inventory Puntero al inventario.
  * @return Máximo posible de objetos dentro del inventario, -1 si ocurre un error.
@@ -58,7 +60,7 @@ int inventory_get_max_objs(Inventory *inventory);
 
 /**
  * @brief Establece el conjunto de objetos para el inventario.
- * @author 
+ * @author Alejandro Domínguez
  *
  * @param inventory Puntero al inventario.
  * @param objs Puntero al conjunto de objetos para ser asignado al inventario.
@@ -68,7 +70,7 @@ Status inventory_set_objs(Inventory *inventory, Set *objs);
 
 /**
  * @brief Establece el máximo de objetos para el inventario.
- * @author 
+ * @author Alejandro Domínguez
  *
  * @param inventory Puntero al inventario.
  * @param max_objs Máximo de objetos que el inventario puede albergar.
@@ -78,7 +80,7 @@ Status inventory_set_max_objs(Inventory *inventory, int max_objs);
 
 /**
  * @brief Añade un objeto al inventario.
- * @author 
+ * @author Alejandro Domínguez
  *
  * @param inventory Puntero al inventario.
  * @param obj_id El ID del objeto a añadir.
@@ -88,7 +90,7 @@ Status inventory_add_object(Inventory *inventory, Id obj_id);
 
 /**
  * @brief Elimina un objeto del inventario.
- * @author 
+ * @author Alejandro Domínguez
  *
  * @param inventory Puntero al inventario.
  * @param obj_id El ID del objeto a eliminar.
@@ -98,7 +100,7 @@ Status inventory_del_object(Inventory *inventory, Id obj_id);
 
 /**
  * @brief Comprueba si el inventario está lleno.
- * @author 
+ * @author Alejandro Domínguez
  *
  * @param inventory Puntero al inventario.
  * @return TRUE si el inventario está lleno, de lo contrario FALSE.
@@ -107,7 +109,7 @@ BOOL inventory_is_full(Inventory *inventory);
 
 /**
  * @brief Imprime los datos del inventario.
- * @author 
+ * @author Alejandro Domínguez
  *
  * Esta función es para fines de depuración. Imprime el número máximo de objetos
  * y el conjunto de objetos en el inventario.

@@ -2,7 +2,7 @@
  * @brief Implementa el intérprete de comandos
  *
  * @file command.c
- * @author 
+ * @author Fernando
  * @version 1.0
  * @date 15-2-26
  * @copyright GNU Public License
@@ -14,11 +14,19 @@
 #include <string.h>
 #include <strings.h>
 
+/** @brief Longitud máxima de una línea de comando. */
 #define CMD_LENGHT 100
+/** @brief Número de elementos reservados al crear un comando. */
 #define SINGLE_ELEM 1
+/** @brief Número máximo de argumentos admitidos por un comando. */
 #define MAX_ARGS 3
 
+/** @brief Tabla de abreviaturas y nombres largos de los comandos. */
 char *cmd_to_str[N_CMD][N_CMDT] = {{"", "No command"}, {"", "Unknown"}, {"e", "exit"}, {"t", "Take"}, {"d", "drop"}, {"a", "attack"}, {"c", "chat"}, {"m", "move"}, {"i", "inspect"}, {"r", "recruit"}, {"ab", "abandon"}, {"u", "use"}, {"o", "open"},{"s", "save"},{"l","load"},{"cb","colab"}};
+/**
+ * @brief Estructura privada que almacena el comando leído.
+ * @author Fernando
+ */
 struct _Command
 {
   CommandCode code;            /*!<  Codigo del comando enumerado */
@@ -159,6 +167,10 @@ Status command_get_user_input(Command *command)
       {
         i++;
       }
+    }
+    if (cmd == UNKNOWN && !strcasecmp(token, "team"))
+    {
+      cmd = COLAB;
     }
 
     /* Extrae el segundo token correspondiente al argumento */

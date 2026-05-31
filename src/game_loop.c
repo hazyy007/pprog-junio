@@ -2,7 +2,7 @@
  * @brief Contiene el bucle principal de ejecución del juego
  *
  * @file game_loop.c
- * @author 
+ * @author Alexander Preciado
  * @version 1.0
  * @date 15-03-2026
  * @copyright GNU Public License
@@ -19,6 +19,12 @@
 #include "game_rules.h"
 #include <time.h>
 
+/**
+ * @brief Actualiza el turno cuando el comando ejecutado lo requiere.
+ * @author Alexander Preciado
+ * @param game Puntero al juego.
+ * @param command Último comando procesado.
+ */
 void game_loop_update_turn(Game *game, Command *command);
 
 void game_loop_update_turn(Game *game, Command *command)
@@ -44,6 +50,13 @@ void game_loop_update_turn(Game *game, Command *command)
   }
 }
 
+/**
+ * @brief Punto de entrada del programa.
+ * @author Alexander Preciado
+ * @param argc Número de argumentos recibidos.
+ * @param argv Vector de argumentos de ejecución.
+ * @return 0 si el programa termina correctamente, 1 en caso de error.
+ */
 int main(int argc, char *argv[])
 {
   Game *game = NULL;

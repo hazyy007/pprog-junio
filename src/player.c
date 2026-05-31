@@ -1,7 +1,7 @@
 /**
  * @brief Implementación del módulo de jugador
  * @file player.c
- * @author 
+ * @author Fernando
  * @version 1.0
  * @date 15-02-2026
  */
@@ -11,9 +11,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-/* Definiciones para evitar números mágicos */
+/** @brief Número de elementos reservados al crear un jugador. */
 #define SINGLE_ELEM 1
+/** @brief Posición inicial de las cadenas internas. */
 #define FIRST_CHAR 0
+/** @brief Salud inicial de un jugador. */
 #define START_HEALTH 3
 
 

@@ -2,7 +2,7 @@
  * @brief Implementa la lógica principal del juego
  *
  * @file game.c
- * @author 
+ * @author Iker
  * @version 2.0
  * @date 15-03-2026
  * @copyright GNU Public License
@@ -20,12 +20,21 @@
 #include <strings.h>
 #include "game_managment.h"
 
+/** @brief Índice del jugador principal dentro del array de jugadores. */
 #define PLAYER_ID 0
+/** @brief Primera posición válida de los arrays internos. */
 #define FIRST_POSITION 0
+/** @brief Número máximo de objetos cargados en el juego. */
 #define MAX_OBJECTS 100
+/** @brief Número máximo de enlaces cargados en el juego. */
 #define MAX_LINKS 800
+/** @brief Número máximo de jugadores cargados en el juego. */
 #define MAX_PLAYERS 8
 
+/**
+ * @brief Estructura privada que contiene todo el estado del juego.
+ * @author Iker
+ */
 struct _Game
 {
   Player *players[MAX_PLAYERS];          /*!< Array de punteros a jugadores */
@@ -47,6 +56,13 @@ struct _Game
 };
 
 Status game_add_space(Game *game, Space *space);
+/**
+ * @brief Obtiene el identificador de un espacio por su posición interna.
+ * @author Iker
+ * @param game Puntero al juego.
+ * @param position Posición del espacio en el array.
+ * @return Identificador del espacio o NO_ID si hay error.
+ */
 Id game_get_space_id_at(Game *game, int position);
 
 Status game_create(Game **game)
@@ -679,6 +695,13 @@ Status game_add_space(Game *game, Space *space)
   return OK;
 }
 
+/**
+ * @brief Obtiene el identificador de un espacio por su posición interna.
+ * @author Iker
+ * @param game Puntero al juego.
+ * @param position Posición del espacio en el array.
+ * @return Identificador del espacio o NO_ID si hay error.
+ */
 Id game_get_space_id_at(Game *game, int position)
 {
   /* Comprueba la validez de la posicion y del juego */
@@ -802,6 +825,13 @@ Link *game_get_link(Game *game, Id link_id)
   return NULL;
 }
 
+/**
+ * @brief Obtiene un enlace por posición en el array interno del juego.
+ * @author Iker
+ * @param game Puntero al juego.
+ * @param index Posición del enlace en el array.
+ * @return Puntero al enlace o NULL si hay error.
+ */
 Link *game_get_link_at(Game *game, int index)
 {
   if (!game || index < 0 || index >= MAX_LINKS)

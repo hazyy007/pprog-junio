@@ -1,4 +1,12 @@
 
+/**
+ * @brief Implementa la carga y guardado de partidas desde fichero.
+ * @file game_managment.c
+ * @author Iker
+ * @version 1.0
+ * @copyright GNU Public License
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

@@ -2,7 +2,7 @@
  * @brief Implementa el módulo de conjuntos
  *
  * @file set.c
- * @author 
+ * @author Alejandro Domínguez
  * @version 1.0
  * @date 15-03-2026
  * @copyright GNU Public License
@@ -13,10 +13,11 @@
 #include <stdlib.h>
 #include <string.h>
 
+/** @brief Número máximo de identificadores que puede guardar un conjunto. */
 #define MAX_IDS 100
 /**
- * @brief Set
- * Estructura de datos que representa un conjunto de identificadores.
+ * @brief Estructura privada que representa un conjunto de identificadores.
+ * @author Alejandro Domínguez
  */
 struct Set
 {

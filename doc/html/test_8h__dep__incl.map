@@ -1,0 +1,19 @@
+<map id="include/test.h" name="include/test.h">
+<area shape="rect" id="Node000001" title="Define utilidades comunes para las pruebas unitarias." alt="" coords="575,5,686,31"/>
+<area shape="rect" id="Node000002" href="$character__test_8c.html" title="It tests character module." alt="" coords="5,79,155,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="562,31,167,81,155,83,154,78,166,76,562,25"/>
+<area shape="rect" id="Node000003" href="$inventory__test_8c.html" title="Implementa las pruebas unitarias del módulo Inventory." alt="" coords="179,79,330,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="563,35,316,81,315,76,562,30"/>
+<area shape="rect" id="Node000004" href="$link__test_8c.html" title="Implementa las pruebas unitarias del módulo Link." alt="" coords="355,79,467,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="583,37,447,81,445,76,581,32"/>
+<area shape="rect" id="Node000005" href="$object__test_8c.html" title="Archivo de prueba para el módulo object." alt="" coords="491,79,619,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="610,42,569,80,565,76,607,38"/>
+<area shape="rect" id="Node000006" href="$player__test_8c.html" title="Implementa las pruebas unitarias del módulo Player." alt="" coords="643,79,773,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="655,38,697,76,694,80,651,42"/>
+<area shape="rect" id="Node000007" href="$set__test_8c.html" title="It tests set module." alt="" coords="797,79,905,104"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="680,32,816,76,814,81,678,37"/>
+<area shape="rect" id="Node000008" href="$space__test_8c.html" title="It tests space module." alt="" coords="929,79,1055,104"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="700,30,934,76,933,81,699,35"/>
+<area shape="rect" id="Node000009" href="$test_8c.html" title="Implementa utilidades comunes para las pruebas unitarias." alt="" coords="1079,79,1161,104"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="700,24,868,45,1068,76,1080,78,1079,83,1068,81,867,51,699,30"/>
+</map>

@@ -1,7 +1,7 @@
 /**
  * @brief Implementa las reglas del juego
  * @file game_rules.c
- * @author Alejandro Dominguez
+ * @author Alexander Preciado
  * @version 1.0
  * @date 02-05-2026
  * @copyright GNU Public License
@@ -11,9 +11,13 @@
  #include <stdlib.h>
  #include <time.h>
 
+ /**
+  * @brief Estructura privada que controla las reglas automáticas del juego.
+  * @author Alexander Preciado
+  */
  struct _GameRules
  {
-    int execution_counter; /* Contador de ejecuciones para controlar la frecuencia de las reglas*/
+    int execution_counter; /*!< Contador de ejecuciones para controlar la frecuencia de las reglas */
  };
 
  GameRules* game_rules_create()
@@ -121,4 +125,3 @@
     }
     return OK;
  }
- 

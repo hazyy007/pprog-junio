@@ -1,0 +1,68 @@
+<map id="include/set.h" name="include/set.h">
+<area shape="rect" id="Node000001" title="Define la interfaz del módulo de conjuntos." alt="" coords="626,5,731,31"/>
+<area shape="rect" id="Node000002" href="$inventory_8h.html" title="Inventario." alt="" coords="196,79,342,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="613,33,335,81,334,76,612,28"/>
+<area shape="rect" id="Node000021" href="$space_8h.html" title="Define la interfaz del módulo de espacios." alt="" coords="1090,152,1213,177"/>
+<area shape="poly" id="edge32_Node000001_Node000021" title=" " alt="" coords="668,44,660,75,661,89,668,102,688,113,727,122,842,139,1090,158,1090,163,842,144,726,128,686,118,664,106,656,91,655,74,663,42"/>
+<area shape="rect" id="Node000024" href="$set_8c.html" title="Implementa el módulo de conjuntos." alt="" coords="679,79,755,104"/>
+<area shape="poly" id="edge40_Node000001_Node000024" title=" " alt="" coords="693,42,713,77,708,80,689,44"/>
+<area shape="rect" id="Node000025" href="$set__test_8c.html" title="It tests set module." alt="" coords="779,79,887,104"/>
+<area shape="poly" id="edge41_Node000001_Node000025" title=" " alt="" coords="717,34,809,76,806,81,714,39"/>
+<area shape="rect" id="Node000003" href="$player_8h.html" title="Define la interfaz del módulo de jugador." alt="" coords="369,152,494,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="309,107,406,149,404,154,307,112"/>
+<area shape="rect" id="Node000006" href="$game__actions_8c.html" title="Implementa las acciones del juego." alt="" coords="144,372,290,397"/>
+<area shape="poly" id="edge29_Node000002_Node000006" title=" " alt="" coords="183,107,98,126,64,139,43,154,17,179,10,188,9,197,16,212,34,236,112,322,148,350,187,370,184,374,146,355,108,326,30,240,12,215,4,198,5,186,13,176,39,150,61,134,96,121,182,101"/>
+<area shape="rect" id="Node000019" href="$inventory_8c.html" title="Implementa el módulo de inventario." alt="" coords="54,152,170,177"/>
+<area shape="poly" id="edge30_Node000002_Node000019" title=" " alt="" coords="232,112,138,154,136,149,230,107"/>
+<area shape="rect" id="Node000020" href="$inventory__test_8c.html" title="Implementa las pruebas unitarias del módulo Inventory." alt="" coords="194,152,344,177"/>
+<area shape="poly" id="edge31_Node000002_Node000020" title=" " alt="" coords="272,118,272,152,266,152,266,118"/>
+<area shape="rect" id="Node000004" href="$game_8h.html" title="Define la interfaz principal del juego." alt="" coords="842,225,965,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="508,175,843,225,842,230,507,180"/>
+<area shape="poly" id="edge23_Node000003_Node000006" title=" " alt="" coords="356,180,227,203,174,216,146,227,127,250,117,272,117,296,127,323,138,338,153,351,186,369,183,374,150,355,135,342,123,325,112,297,112,271,123,247,143,223,172,211,226,198,355,175"/>
+<area shape="rect" id="Node000009" href="$game_8c.html" title="Implementa la lógica principal del juego." alt="" coords="394,372,488,397"/>
+<area shape="poly" id="edge22_Node000003_Node000009" title=" " alt="" coords="356,181,269,200,225,214,186,231,154,250,135,271,131,283,131,295,135,308,144,322,155,329,178,336,245,351,395,375,394,380,244,357,176,342,153,334,140,326,130,311,125,296,126,282,131,269,151,246,183,226,223,209,267,195,355,175"/>
+<area shape="rect" id="Node000011" href="$game__reader_8c.html" title="Implementa la carga de datos del juego desde fichero." alt="" coords="1564,372,1705,397"/>
+<area shape="poly" id="edge25_Node000003_Node000011" title=" " alt="" coords="508,167,813,187,1008,202,1205,223,1445,247,1591,269,1644,282,1672,297,1679,317,1674,338,1662,358,1648,373,1644,370,1658,354,1669,336,1674,317,1668,300,1642,287,1590,274,1444,252,1205,228,1008,208,813,192,508,172"/>
+<area shape="rect" id="Node000015" href="$graphic__engine_8c.html" title="Implementa el motor gráfico textual." alt="" coords="1272,372,1426,397"/>
+<area shape="poly" id="edge26_Node000003_Node000015" title=" " alt="" coords="508,164,701,171,820,179,944,190,1065,207,1174,230,1264,259,1298,277,1325,297,1339,314,1346,335,1352,371,1346,372,1341,336,1334,317,1322,301,1296,282,1261,264,1173,235,1064,213,944,196,820,184,700,176,508,169"/>
+<area shape="rect" id="Node000016" href="$game__managment_8c.html" title="Implementa la carga y guardado de partidas desde fichero." alt="" coords="154,299,333,324"/>
+<area shape="poly" id="edge24_Node000003_Node000016" title=" " alt="" coords="356,182,283,201,254,213,236,227,229,244,230,263,240,297,235,299,224,264,224,243,232,224,251,209,281,196,355,177"/>
+<area shape="rect" id="Node000017" href="$player_8c.html" title="Implementación del módulo de jugador." alt="" coords="246,225,342,251"/>
+<area shape="poly" id="edge27_Node000003_Node000017" title=" " alt="" coords="399,186,318,227,315,223,396,181"/>
+<area shape="rect" id="Node000018" href="$player__test_8c.html" title="Implementa las pruebas unitarias del módulo Player." alt="" coords="367,225,496,251"/>
+<area shape="poly" id="edge28_Node000003_Node000018" title=" " alt="" coords="434,191,434,225,429,225,429,191"/>
+<area shape="rect" id="Node000005" href="$game__actions_8h.html" title="Define la interfaz de actualización del juego (acciones)" alt="" coords="690,299,866,324"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="873,260,800,301,797,296,870,255"/>
+<area shape="rect" id="Node000007" href="$game__loop_8c.html" title="Contiene el bucle principal de ejecución del juego." alt="" coords="840,372,968,397"/>
+<area shape="poly" id="edge19_Node000004_Node000007" title=" " alt="" coords="906,265,906,372,901,372,901,265"/>
+<area shape="rect" id="Node000008" href="$game__managment_8h.html" title="Define las operaciones de carga y guardado de partidas." alt="" coords="408,299,616,324"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="829,255,575,301,574,296,828,250"/>
+<area shape="poly" id="edge18_Node000004_Node000009" title=" " alt="" coords="835,256,759,275,679,301,629,326,552,354,484,375,482,369,551,349,627,322,677,296,758,270,833,251"/>
+<area shape="rect" id="Node000010" href="$game__reader_8h.html" title="Define la interfaz de lectura de datos del juego." alt="" coords="1488,299,1658,324"/>
+<area shape="poly" id="edge10_Node000004_Node000010" title=" " alt="" coords="979,244,1469,296,1487,298,1487,303,1469,301,978,250"/>
+<area shape="poly" id="edge21_Node000004_Node000011" title=" " alt="" coords="979,244,1138,264,1324,296,1478,334,1599,369,1597,374,1476,339,1323,301,1138,270,978,250"/>
+<area shape="rect" id="Node000012" href="$game__rules_8h.html" title="Define la interfaz del módulo de reglas del juego." alt="" coords="942,299,1103,324"/>
+<area shape="poly" id="edge12_Node000004_Node000012" title=" " alt="" coords="936,255,1004,296,1001,301,933,260"/>
+<area shape="rect" id="Node000014" href="$graphic__engine_8h.html" title="Define la interfaz del motor gráfico textual." alt="" coords="1128,299,1312,324"/>
+<area shape="poly" id="edge15_Node000004_Node000014" title=" " alt="" coords="968,251,1169,296,1168,301,967,256"/>
+<area shape="poly" id="edge20_Node000004_Node000016" title=" " alt="" coords="829,250,334,303,333,298,828,245"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="677,328,291,377,290,371,676,323"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="812,328,884,369,882,374,809,333"/>
+<area shape="poly" id="edge9_Node000008_Node000006" title=" " alt="" coords="452,330,265,374,264,369,451,325"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="492,336,454,374,450,370,488,332"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="1594,333,1626,370,1622,374,1590,336"/>
+<area shape="poly" id="edge13_Node000012_Node000007" title=" " alt="" coords="993,333,924,374,922,369,990,329"/>
+<area shape="rect" id="Node000013" href="$game__rules_8c.html" title="Implementa las reglas del juego." alt="" coords="992,372,1124,397"/>
+<area shape="poly" id="edge14_Node000012_Node000013" title=" " alt="" coords="1037,335,1055,371,1050,373,1032,337"/>
+<area shape="poly" id="edge16_Node000014_Node000007" title=" " alt="" coords="1156,330,955,374,954,369,1155,324"/>
+<area shape="poly" id="edge17_Node000014_Node000015" title=" " alt="" coords="1254,328,1329,369,1326,374,1251,333"/>
+<area shape="poly" id="edge33_Node000021_Node000004" title=" " alt="" coords="1099,184,944,228,943,223,1098,179"/>
+<area shape="poly" id="edge34_Node000021_Node000009" title=" " alt="" coords="1077,179,675,240,486,275,424,290,397,301,393,308,392,317,399,336,412,354,428,370,424,373,408,358,394,338,387,318,388,307,394,297,423,284,484,270,674,235,1076,174"/>
+<area shape="poly" id="edge36_Node000021_Node000011" title=" " alt="" coords="1227,165,1367,171,1531,182,1672,198,1721,210,1748,223,1760,244,1760,266,1750,288,1735,309,1694,347,1655,374,1652,370,1690,343,1731,306,1746,285,1754,265,1754,246,1744,227,1719,215,1672,204,1530,187,1367,176,1227,171"/>
+<area shape="poly" id="edge37_Node000021_Node000015" title=" " alt="" coords="1227,174,1312,194,1347,207,1370,224,1380,242,1385,263,1382,305,1370,344,1358,373,1353,371,1365,343,1377,304,1379,263,1375,244,1366,227,1345,212,1310,199,1226,179"/>
+<area shape="poly" id="edge35_Node000021_Node000016" title=" " alt="" coords="1076,169,974,173,846,182,706,199,567,228,538,240,508,253,405,281,311,301,310,296,404,276,507,248,536,235,565,223,705,194,846,177,974,167,1076,164"/>
+<area shape="rect" id="Node000022" href="$space_8c.html" title="Implementa el módulo de espacios." alt="" coords="1488,225,1583,251"/>
+<area shape="poly" id="edge38_Node000021_Node000022" title=" " alt="" coords="1227,177,1488,225,1487,231,1226,182"/>
+<area shape="rect" id="Node000023" href="$space__test_8c.html" title="It tests space module." alt="" coords="1607,225,1734,251"/>
+<area shape="poly" id="edge39_Node000021_Node000023" title=" " alt="" coords="1227,173,1596,223,1607,224,1606,230,1595,228,1226,178"/>
+</map>

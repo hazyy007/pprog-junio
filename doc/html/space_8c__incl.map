@@ -1,0 +1,22 @@
+<map id="src/space.c" name="src/space.c">
+<area shape="rect" id="Node000001" title="Implementa el módulo de espacios." alt="" coords="221,5,315,31"/>
+<area shape="rect" id="Node000002" href="$space_8h.html" title="Define la interfaz del módulo de espacios." alt="" coords="53,79,125,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="240,33,132,76,130,71,238,28"/>
+<area shape="rect" id="Node000006" href="$character_8h.html" title="Define el módulo del personaje." alt="" coords="185,152,279,177"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="257,33,239,53,225,79,222,109,227,138,221,139,217,110,220,78,235,50,253,29"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="235,79,301,104"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="271,31,271,65,265,65,265,31"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="326,79,397,104"/>
+<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="285,29,337,68,334,72,281,33"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="421,79,491,104"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="299,28,414,71,412,76,297,33"/>
+<area shape="rect" id="Node000003" href="$types_8h.html" title="It defines common types for the whole project." alt="" coords="54,225,125,251"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="65,106,35,125,22,138,12,153,9,171,18,188,34,203,53,216,50,221,30,207,13,191,4,172,7,151,18,135,32,121,62,102"/>
+<area shape="rect" id="Node000004" href="$set_8h.html" title="Define la interfaz del módulo de conjuntos." alt="" coords="22,152,77,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="85,106,65,141,60,139,80,103"/>
+<area shape="rect" id="Node000005" href="$link_8h.html" title="Define la interfaz del módulo de enlaces." alt="" coords="101,152,160,177"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="99,103,119,139,115,141,94,106"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="58,176,79,212,74,215,54,179"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="126,179,105,215,101,212,122,176"/>
+<area shape="poly" id="edge8_Node000006_Node000003" title=" " alt="" coords="210,180,126,221,124,217,208,175"/>
+</map>
